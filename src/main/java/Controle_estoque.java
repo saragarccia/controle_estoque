@@ -1,4 +1,4 @@
-package com.mycompany.controle_estoque;
+
 
 public class Controle_estoque {
 
