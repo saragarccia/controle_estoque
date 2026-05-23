@@ -82,9 +82,16 @@ Desenvolver um sistema capaz de:
 ---
 
 ## Tecnologias Utilizadas
-- Java
-- MySQL
-- JDBC (DAO)
+
+| Tecnologia | Versão |
+|------------|---------|
+| Java | 25.0.2 |
+| Apache NetBeans IDE | 29 |
+| Java Swing | Biblioteca gráfica |
+| MySQL | 8.0 |
+| MySQL Connector/J (JDBC) | 8.0.33 |
+| Git | Controle de versão |
+| GitHub | Hospedagem do repositório |
 
 ---
 
