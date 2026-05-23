@@ -42,6 +42,45 @@ Desenvolver um sistema capaz de:
 
 ---
 
+# Requisitos Funcionais
+
+## Produtos
+- RF01: O sistema deve permitir cadastrar produtos.
+- RF02: O sistema deve permitir editar produtos.
+- RF03: O sistema deve permitir excluir produtos.
+- RF04: O sistema deve permitir listar produtos cadastrados.
+
+## Categorias
+- RF05: O sistema deve permitir cadastrar categorias.
+- RF06: O sistema deve permitir editar categorias.
+- RF07: O sistema deve permitir excluir categorias.
+- RF08: O sistema deve permitir listar categorias cadastradas.
+
+## Movimentações
+- RF09: O sistema deve permitir registrar entrada de produtos.
+- RF10: O sistema deve permitir registrar saída de produtos.
+- RF11: O sistema deve atualizar automaticamente o estoque após movimentações.
+- RF12: O sistema deve avisar quando o produto estiver abaixo da quantidade mínima.
+- RF13: O sistema deve avisar quando o produto ultrapassar a quantidade máxima.
+
+## Relatórios
+- RF14: O sistema deve gerar relatório de lista de preços.
+- RF15: O sistema deve gerar relatório de balanço físico/financeiro.
+- RF16: O sistema deve gerar relatório de produtos abaixo da quantidade mínima.
+- RF17: O sistema deve gerar relatório de produtos por categoria.
+- RF18: O sistema deve gerar relatório de produtos com maior entrada e saída.
+
+# Requisitos Não Funcionais
+
+- RNF01: O sistema deve ser desenvolvido em Java.
+- RNF02: O sistema deve utilizar banco de dados MySQL.
+- RNF03: O sistema deve possuir interface gráfica utilizando Java Swing.
+- RNF04: O projeto deve utilizar GitHub para controle de versão.
+- RNF05: O código-fonte deve seguir padronização e organização.
+- RNF06: O sistema deve permitir desenvolvimento colaborativo entre os integrantes.
+
+---
+
 ## Tecnologias Utilizadas
 - Java
 - MySQL
