@@ -4,12 +4,16 @@
  */
 package visao;
 
+import modelo.Movimentacao;
+
+import dao.MovimentacaoDAO;
+
 /**
  *
  * @author dcris
  */
 public class FrmCadastroMovimentacao extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCadastroMovimentacao.class.getName());
 
     /**
@@ -28,21 +32,216 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        IblTitulo = new javax.swing.JLabel();
+        IblProduto = new javax.swing.JLabel();
+        IblQuantidade = new javax.swing.JLabel();
+        txtProduto = new javax.swing.JTextField();
+        txtQuantidade = new javax.swing.JTextField();
+        IblTipo = new javax.swing.JLabel();
+        cbTipo = new javax.swing.JComboBox<>();
+        IblData = new javax.swing.JLabel();
+        txtData = new javax.swing.JTextField();
+        btnNovo = new javax.swing.JButton();
+        bntSalvar = new javax.swing.JButton();
+        bntLimpar = new javax.swing.JButton();
+        bntSair = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        IblTitulo.setText("CADASTRO MOVIMENTAÇÃO");
+
+        IblProduto.setText("PRODUTO:");
+
+        IblQuantidade.setText("QUANTIDADE:");
+
+        txtProduto.addActionListener(this::txtProdutoActionPerformed);
+
+        IblTipo.setText("TIPO:");
+
+        cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Saída" }));
+        cbTipo.addActionListener(this::cbTipoActionPerformed);
+
+        IblData.setText("DATA:");
+
+        btnNovo.setText("NOVO");
+        btnNovo.addActionListener(this::btnNovoActionPerformed);
+
+        bntSalvar.setText("SALVAR");
+        bntSalvar.addActionListener(this::bntSalvarActionPerformed);
+
+        bntLimpar.setText("LIMPAR");
+        bntLimpar.addActionListener(this::bntLimparActionPerformed);
+
+        bntSair.setText("SAIR");
+        bntSair.addActionListener(this::bntSairActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnNovo)
+                        .addGap(18, 18, 18)
+                        .addComponent(bntSalvar)
+                        .addGap(18, 18, 18)
+                        .addComponent(bntLimpar)
+                        .addGap(18, 18, 18)
+                        .addComponent(bntSair)
+                        .addContainerGap(52, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(IblData)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(IblProduto)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(IblQuantidade)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(IblTipo)
+                                .addGap(18, 18, 18)
+                                .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(IblTitulo)
+                .addGap(118, 118, 118))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(IblTitulo)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IblProduto))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IblQuantidade)
+                    .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(IblTipo)
+                    .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(IblData))
+                .addGap(55, 55, 55)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnNovo)
+                    .addComponent(bntSalvar)
+                    .addComponent(bntLimpar)
+                    .addComponent(bntSair))
+                .addGap(58, 58, 58))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtProdutoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtProdutoActionPerformed
+
+    private void cbTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbTipoActionPerformed
+
+    private void btnNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNovoActionPerformed
+        // TODO add your handling code here:
+        txtProduto.setText("");
+        txtQuantidade.setText("");
+        txtData.setText("");
+        cbTipo.setSelectedIndex(0);
+        txtProduto.requestFocus();
+        dispose();
+    }//GEN-LAST:event_btnNovoActionPerformed
+
+    private void bntSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSairActionPerformed
+        // TODO add your handling code here:
+        txtProduto.setText("");
+        txtQuantidade.setText("");
+        txtData.setText("");
+        cbTipo.setSelectedIndex(0);
+    }//GEN-LAST:event_bntSairActionPerformed
+
+    private void bntLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntLimparActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bntLimparActionPerformed
+
+    private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
+        // TODO add your handling code here:
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {
+
+        String produto = txtProduto.getText();
+
+        String quantidade = txtQuantidade.getText();
+
+        String data = txtData.getText();
+
+        String tipo = cbTipo.getSelectedItem().toString();
+
+        if (produto.isEmpty() || quantidade.isEmpty() || data.isEmpty()) {
+
+            javax.swing.JOptionPane.showMessageDialog(null,
+                    "Preencha todos os campos!");
+
+        } else {
+            Movimentacao mov = new Movimentacao();
+
+            mov.setProduto(produto);
+
+            mov.setQuantidade(Integer.parseInt(quantidade));
+
+            mov.setTipo(tipo);
+
+            mov.setData(data);
+
+            MovimentacaoDAO dao = new MovimentacaoDAO();
+
+            dao.salvar();
+            int estoque = 50;
+
+if(tipo.equals("Entrada")) {
+
+    estoque = estoque + Integer.parseInt(quantidade);
+
+} else {
+
+    estoque = estoque - Integer.parseInt(quantidade);
+
+}
+
+javax.swing.JOptionPane.showMessageDialog(null,
+"Estoque atual: " + estoque);
+if(estoque < 10){
+
+    javax.swing.JOptionPane.showMessageDialog(null,
+    "Estoque mínimo atingido!");
+
+}
+
+if(estoque > 100){
+
+    javax.swing.JOptionPane.showMessageDialog(null,
+    "Estoque máximo atingido!");
+
+}
+
+            javax.swing.JOptionPane.showMessageDialog(null,
+                    "Movimentação salva com sucesso!");
+        }
+    }//GEN-LAST:event_bntSalvarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -70,5 +269,18 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel IblData;
+    private javax.swing.JLabel IblProduto;
+    private javax.swing.JLabel IblQuantidade;
+    private javax.swing.JLabel IblTipo;
+    private javax.swing.JLabel IblTitulo;
+    private javax.swing.JButton bntLimpar;
+    private javax.swing.JButton bntSair;
+    private javax.swing.JButton bntSalvar;
+    private javax.swing.JButton btnNovo;
+    private javax.swing.JComboBox<String> cbTipo;
+    private javax.swing.JTextField txtData;
+    private javax.swing.JTextField txtProduto;
+    private javax.swing.JTextField txtQuantidade;
     // End of variables declaration//GEN-END:variables
 }
