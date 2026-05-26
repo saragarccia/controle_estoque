@@ -54,7 +54,11 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
 
         IblQuantidade.setText("QUANTIDADE:");
 
+        txtProduto.setColumns(25);
         txtProduto.addActionListener(this::txtProdutoActionPerformed);
+
+        txtQuantidade.setColumns(10);
+        txtQuantidade.addActionListener(this::txtQuantidadeActionPerformed);
 
         IblTipo.setText("TIPO:");
 
@@ -62,6 +66,8 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
         cbTipo.addActionListener(this::cbTipoActionPerformed);
 
         IblData.setText("DATA:");
+
+        txtData.setColumns(10);
 
         btnNovo.setText("NOVO");
         btnNovo.addActionListener(this::btnNovoActionPerformed);
@@ -97,20 +103,20 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(IblData)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(IblProduto)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(IblQuantidade)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(IblTipo)
                                 .addGap(18, 18, 18)
                                 .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addGap(0, 196, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(IblTitulo)
@@ -164,25 +170,24 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
         txtData.setText("");
         cbTipo.setSelectedIndex(0);
         txtProduto.requestFocus();
-        dispose();
+        
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void bntSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSairActionPerformed
-        // TODO add your handling code here:
-        txtProduto.setText("");
-        txtQuantidade.setText("");
-        txtData.setText("");
-        cbTipo.setSelectedIndex(0);
+
+        dispose();
+        
     }//GEN-LAST:event_bntSairActionPerformed
 
     private void bntLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntLimparActionPerformed
-        // TODO add your handling code here:
+txtProduto.setText("");
+    txtQuantidade.setText("");
+    txtData.setText("");
+    cbTipo.setSelectedIndex(0);
     }//GEN-LAST:event_bntLimparActionPerformed
 
     private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
         // TODO add your handling code here:
-    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {
-
         String produto = txtProduto.getText();
 
         String quantidade = txtQuantidade.getText();
@@ -209,7 +214,7 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
 
             MovimentacaoDAO dao = new MovimentacaoDAO();
 
-            dao.salvar();
+            dao.salvar(mov);
             int estoque = 50;
 
 if(tipo.equals("Entrada")) {
@@ -242,6 +247,10 @@ if(estoque > 100){
                     "Movimentação salva com sucesso!");
         }
     }//GEN-LAST:event_bntSalvarActionPerformed
+
+    private void txtQuantidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtQuantidadeActionPerformed
 
     /**
      * @param args the command line arguments

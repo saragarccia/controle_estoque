@@ -42,17 +42,17 @@
                           <Group type="102" attributes="0">
                               <Component id="IblData" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtData" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtData" min="-2" pref="101" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="IblProduto" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtProduto" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtProduto" min="-2" pref="101" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="IblQuantidade" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtQuantidade" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtQuantidade" min="-2" pref="101" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="IblTipo" min="-2" max="-2" attributes="0"/>
@@ -60,7 +60,7 @@
                               <Component id="cbTipo" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="196" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -125,11 +125,20 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtProduto">
+      <Properties>
+        <Property name="columns" type="int" value="25"/>
+      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtProdutoActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="txtQuantidade">
+      <Properties>
+        <Property name="columns" type="int" value="10"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtQuantidadeActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="IblTipo">
       <Properties>
@@ -158,6 +167,9 @@
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtData">
+      <Properties>
+        <Property name="columns" type="int" value="10"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnNovo">
       <Properties>
