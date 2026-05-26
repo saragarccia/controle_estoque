@@ -7,55 +7,56 @@ import javax.swing.table.DefaultTableModel;
 import modelo.Categoria;
 
 public class FrmGerenciaCategoria extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmGerenciaCategoria.class.getName());
 
-public FrmGerenciaCategoria() {
-    initComponents();
-    jTable1.setDefaultEditor(Object.class, null);
-    carregarTabela();
-    setLocationRelativeTo(null);
-}
-
-private void carregarTabela() {
-    CategoriaDAO dao = new CategoriaDAO();
-    ArrayList<Categoria> lista = dao.listarCategorias();
-
-    DefaultTableModel modeloTabela = (DefaultTableModel) jTable1.getModel();
-    modeloTabela.setRowCount(0);
-
-    for (Categoria categoria : lista) {
-        modeloTabela.addRow(new Object[]{
-            categoria.getIdCategoria(),
-            categoria.getNome(),
-            categoria.getTamanho(),
-            categoria.getEmbalagem()
-        });
-    }
-}
-
-private int pegarIdSelecionado() {
-    int linhaSelecionada = jTable1.getSelectedRow();
-
-    if (linhaSelecionada < 0) {
-        JOptionPane.showMessageDialog(this, "Selecione uma categoria na tabela.");
-        return -1;
+    public FrmGerenciaCategoria() {
+        initComponents();
+        jTable1.setDefaultEditor(Object.class, null);
+        carregarTabela();
+        setLocationRelativeTo(null);
     }
 
-    return Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
-}
+    private void carregarTabela() {
+        CategoriaDAO dao = new CategoriaDAO();
+        ArrayList<Categoria> lista = dao.listarCategorias();
 
-private void abrirTelaCadastro(FrmCadastroCategoria tela) {
-    tela.addWindowListener(new java.awt.event.WindowAdapter() {
-        @Override
-        public void windowClosed(java.awt.event.WindowEvent evt) {
-            carregarTabela();
+        DefaultTableModel modeloTabela = (DefaultTableModel) jTable1.getModel();
+        modeloTabela.setRowCount(0);
+
+        for (Categoria categoria : lista) {
+            modeloTabela.addRow(new Object[]{
+                categoria.getIdCategoria(),
+                categoria.getNome(),
+                categoria.getTamanho(),
+                categoria.getEmbalagem()
+            });
         }
-    });
+    }
 
-    tela.setLocationRelativeTo(this);
-    tela.setVisible(true);
-}
+    private int pegarIdSelecionado() {
+        int linhaSelecionada = jTable1.getSelectedRow();
+
+        if (linhaSelecionada < 0) {
+            JOptionPane.showMessageDialog(this, "Selecione uma categoria na tabela.");
+            return -1;
+        }
+
+        return Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
+    }
+
+    private void abrirTelaCadastro(FrmCadastroCategoria tela) {
+        tela.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                carregarTabela();
+            }
+        });
+
+        tela.setLocationRelativeTo(this);
+        tela.setVisible(true);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -69,7 +70,7 @@ private void abrirTelaCadastro(FrmCadastroCategoria tela) {
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         Novo.setText("Novo");
         Novo.addActionListener(this::NovoActionPerformed);
@@ -147,52 +148,56 @@ private void abrirTelaCadastro(FrmCadastroCategoria tela) {
     }// </editor-fold>//GEN-END:initComponents
 
     private void NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoActionPerformed
-    FrmCadastroCategoria tela = new FrmCadastroCategoria();
-abrirTelaCadastro(tela);
+        FrmCadastroCategoria tela = new FrmCadastroCategoria();
+        abrirTelaCadastro(tela);
     }//GEN-LAST:event_NovoActionPerformed
 
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
-    int idCategoria = pegarIdSelecionado();
+        int idCategoria = pegarIdSelecionado();
 
-if (idCategoria != -1) {
-    FrmCadastroCategoria tela = new FrmCadastroCategoria(idCategoria);
-    abrirTelaCadastro(tela);
-}
+        if (idCategoria != -1) {
+            FrmCadastroCategoria tela = new FrmCadastroCategoria(idCategoria);
+            abrirTelaCadastro(tela);
+        }
     }//GEN-LAST:event_EditarActionPerformed
 
     private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
-    int idCategoria = pegarIdSelecionado();
+        int idCategoria = pegarIdSelecionado();
 
-if (idCategoria == -1) {
-    return;
-}
+        if (idCategoria == -1) {
+            return;
+        }
+        Object[] opcoes = {"Sim", "Não"};
+        int resposta = JOptionPane.showOptionDialog(
+                this,
+                "Deseja realmente excluir esta categoria?",
+                "Confirmar exclusão",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcoes,
+                opcoes[0]
+        );
 
-int resposta = JOptionPane.showConfirmDialog(
-        this,
-        "Deseja realmente excluir esta categoria?",
-        "Confirmar exclusão",
-        JOptionPane.YES_NO_OPTION
-);
+        if (resposta == JOptionPane.YES_OPTION) {
+            CategoriaDAO dao = new CategoriaDAO();
+            boolean sucesso = dao.excluirCategoria(idCategoria);
 
-if (resposta == JOptionPane.YES_OPTION) {
-    CategoriaDAO dao = new CategoriaDAO();
-    boolean sucesso = dao.excluirCategoria(idCategoria);
-
-    if (sucesso) {
-        JOptionPane.showMessageDialog(this, "Categoria excluída com sucesso!");
-        carregarTabela();
-    } else {
-        JOptionPane.showMessageDialog(this, "Erro ao excluir categoria.");
-    }
-}
+            if (sucesso) {
+                JOptionPane.showMessageDialog(this, "Categoria excluída com sucesso!");
+                carregarTabela();
+            } else {
+                JOptionPane.showMessageDialog(this, "Erro ao excluir categoria.");
+            }
+        }
     }//GEN-LAST:event_ExcluirActionPerformed
 
     private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
-    carregarTabela();
+        carregarTabela();
     }//GEN-LAST:event_AtualizarActionPerformed
 
     private void FecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FecharActionPerformed
-    System.exit(0);
+        System.exit(0);
     }//GEN-LAST:event_FecharActionPerformed
 
     /**

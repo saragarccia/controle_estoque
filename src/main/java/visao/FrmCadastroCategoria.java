@@ -5,9 +5,9 @@ import modelo.Categoria;
 import javax.swing.JOptionPane;
 
 public class FrmCadastroCategoria extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCadastroCategoria.class.getName());
-    
+
     private int idCategoria = 0;
 
     public FrmCadastroCategoria() {
@@ -15,90 +15,96 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
     }
 
     FrmCadastroCategoria(int idCategoria) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        initComponents();
+        this.idCategoria = idCategoria;
+        receberIdCategoria(idCategoria);
     }
 
     public void receberIdCategoria(int idCategoria) {
-    this.idCategoria = idCategoria;
-    carregarDadosCategoria();
-}
-
-private void carregarDadosCategoria() {
-    CategoriaDAO dao = new CategoriaDAO();
-    Categoria categoria = dao.buscarCategoria(idCategoria);
-
-    if (categoria != null) {
-        jTextField1.setText(categoria.getNome());
-        jComboBox1.setSelectedItem(categoria.getTamanho());
-        jComboBox2.setSelectedItem(categoria.getEmbalagem());
-    } else {
-        JOptionPane.showMessageDialog(this, "Categoria não encontrada.");
-        this.dispose();
-    }
-}
-
-private void limparCampos() {
-    jTextField1.setText("");
-    jComboBox1.setSelectedIndex(0);
-    jComboBox2.setSelectedIndex(0);
-    jTextField1.requestFocus();
-}
-
-private boolean camposValidos() {
-    if (jTextField1.getText().trim().equals("")) {
-        JOptionPane.showMessageDialog(this, "Informe o nome da categoria.");
-        return false;
+        this.idCategoria = idCategoria;
+        carregarDadosCategoria();
     }
 
-    if (jComboBox1.getSelectedIndex() == 0) {
-        JOptionPane.showMessageDialog(this, "Selecione o tamanho.");
-        return false;
+    private void carregarDadosCategoria() {
+        CategoriaDAO dao = new CategoriaDAO();
+        Categoria categoria = dao.buscarCategoria(idCategoria);
+
+        if (categoria != null) {
+            txtNome.setText(categoria.getNome());
+            cmbTamanho.setSelectedItem(categoria.getTamanho());
+            cmbEmbalagem.setSelectedItem(categoria.getEmbalagem());
+        } else {
+            JOptionPane.showMessageDialog(this, "Categoria não encontrada.");
+            this.dispose();
+        }
     }
 
-    if (jComboBox2.getSelectedIndex() == 0) {
-        JOptionPane.showMessageDialog(this, "Selecione a embalagem.");
-        return false;
+    private void limparCampos() {
+        txtNome.setText("");
+        cmbTamanho.setSelectedIndex(0);
+        cmbEmbalagem.setSelectedIndex(0);
+        txtNome.requestFocus();
     }
 
-    return true;
-}
-    
+    private boolean camposValidos() {
+        if (txtNome.getText().trim().equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o nome da categoria.");
+            return false;
+        }
+
+        if (cmbTamanho.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Selecione o tamanho.");
+            return false;
+        }
+
+        if (cmbEmbalagem.getSelectedIndex() == 0) {
+            JOptionPane.showMessageDialog(this, "Selecione a embalagem.");
+            return false;
+        }
+
+        return true;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        LimparCadastro = new javax.swing.JButton();
-        SalvarCadastro = new javax.swing.JButton();
-        CancelarCadastro = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        lblNome = new javax.swing.JLabel();
+        lblTamanho = new javax.swing.JLabel();
+        lblEmbalagem = new javax.swing.JLabel();
+        btnLimpar = new javax.swing.JButton();
+        btnSalvar = new javax.swing.JButton();
+        btnCancelar = new javax.swing.JButton();
+        cmbTamanho = new javax.swing.JComboBox<>();
+        cmbEmbalagem = new javax.swing.JComboBox<>();
+        txtNome = new javax.swing.JTextField();
+        lblCadastroCategoria = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Nome:");
+        lblNome.setText("Nome:");
 
-        jLabel2.setText("Tamanho:");
+        lblTamanho.setText("Tamanho:");
 
-        jLabel3.setText("Embalagem");
+        lblEmbalagem.setText("Embalagem:");
 
-        LimparCadastro.setText("Limpar");
-        LimparCadastro.addActionListener(this::LimparCadastroActionPerformed);
+        btnLimpar.setText("Limpar");
+        btnLimpar.addActionListener(this::btnLimparActionPerformed);
 
-        SalvarCadastro.setText("Salvar");
-        SalvarCadastro.addActionListener(this::SalvarCadastroActionPerformed);
+        btnSalvar.setText("Salvar");
+        btnSalvar.addActionListener(this::btnSalvarActionPerformed);
 
-        CancelarCadastro.setText("Cancelar");
-        CancelarCadastro.addActionListener(this::CancelarCadastroActionPerformed);
+        btnCancelar.setText("Cancelar");
+        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Pequeno", "Médio", "Grande" }));
+        cmbTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Pequeno", "Médio", "Grande" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Lata", "Vidro", "Plástico" }));
+        cmbEmbalagem.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Lata", "Vidro", "Plástico" }));
 
-        jTextField1.addActionListener(this::jTextField1ActionPerformed);
+        txtNome.addActionListener(this::txtNomeActionPerformed);
+
+        lblCadastroCategoria.setText("Cadastro de Categoria");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -108,46 +114,52 @@ private boolean camposValidos() {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(SalvarCadastro)
+                        .addComponent(btnSalvar)
                         .addGap(45, 45, 45)
-                        .addComponent(LimparCadastro)
+                        .addComponent(btnLimpar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                        .addComponent(CancelarCadastro))
+                        .addComponent(btnCancelar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1))
+                            .addComponent(lblTamanho)
+                            .addComponent(lblEmbalagem)
+                            .addComponent(lblNome))
                         .addGap(54, 54, 54)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1))))
+                            .addComponent(cmbTamanho, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbEmbalagem, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtNome))))
                 .addGap(41, 41, 41))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(128, 128, 128)
+                .addComponent(lblCadastroCategoria)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(7, 7, 7)
+                .addComponent(lblCadastroCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblNome)
+                    .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblTamanho)
+                    .addComponent(cmbTamanho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(lblEmbalagem)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 65, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LimparCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(SalvarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CancelarCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cmbEmbalagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
@@ -155,46 +167,58 @@ private boolean camposValidos() {
     }// </editor-fold>//GEN-END:initComponents
 
     private void SalvarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarCadastroActionPerformed
-    if (!camposValidos()) {
-    return;
-}
+        if (!camposValidos()) {
+            return;
+        }
 
-Categoria categoria = new Categoria();
+        Categoria categoria = new Categoria();
 
-categoria.setIdCategoria(idCategoria);
-categoria.setNome(jTextField1.getText().trim());
-categoria.setTamanho(jComboBox1.getSelectedItem().toString());
-categoria.setEmbalagem(jComboBox2.getSelectedItem().toString());
+        categoria.setIdCategoria(idCategoria);
+        categoria.setNome(txtNome.getText().trim());
+        categoria.setTamanho(cmbTamanho.getSelectedItem().toString());
+        categoria.setEmbalagem(cmbEmbalagem.getSelectedItem().toString());
 
-CategoriaDAO dao = new CategoriaDAO();
+        CategoriaDAO dao = new CategoriaDAO();
 
-boolean sucesso;
+        boolean sucesso;
 
-if (idCategoria == 0) {
-    sucesso = dao.cadastrarCategoria(categoria);
-} else {
-    sucesso = dao.alterarCategoria(categoria);
-}
+        if (idCategoria == 0) {
+            sucesso = dao.cadastrarCategoria(categoria);
+        } else {
+            sucesso = dao.alterarCategoria(categoria);
+        }
 
-if (sucesso) {
-    JOptionPane.showMessageDialog(this, "Categoria salva com sucesso!");
-    this.dispose();
-} else {
-    JOptionPane.showMessageDialog(this, "Erro ao salvar categoria.");
-}
+        if (sucesso) {
+            JOptionPane.showMessageDialog(this, "Categoria salva com sucesso!");
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao salvar categoria.");
+        }
     }//GEN-LAST:event_SalvarCadastroActionPerformed
 
     private void LimparCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparCadastroActionPerformed
-    limparCampos(); 
+        limparCampos();
     }//GEN-LAST:event_LimparCadastroActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_txtNomeActionPerformed
 
     private void CancelarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarCadastroActionPerformed
-    this.dispose();
+        this.dispose();
     }//GEN-LAST:event_CancelarCadastroActionPerformed
+
+    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        // TODO add your handling code here:
+        CancelarCadastroActionPerformed(evt);
+    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {
+        SalvarCadastroActionPerformed(evt);
+    }
+
+    private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {
+        LimparCadastroActionPerformed(evt);
+    }
 
     /**
      * @param args the command line arguments
@@ -222,14 +246,15 @@ if (sucesso) {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton CancelarCadastro;
-    private javax.swing.JButton LimparCadastro;
-    private javax.swing.JButton SalvarCadastro;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnLimpar;
+    private javax.swing.JButton btnSalvar;
+    private javax.swing.JComboBox<String> cmbEmbalagem;
+    private javax.swing.JComboBox<String> cmbTamanho;
+    private javax.swing.JLabel lblCadastroCategoria;
+    private javax.swing.JLabel lblEmbalagem;
+    private javax.swing.JLabel lblNome;
+    private javax.swing.JLabel lblTamanho;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
