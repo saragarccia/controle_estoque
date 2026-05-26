@@ -1,21 +1,20 @@
 package visao;
 
-    import dao.ProdutoDAO;
-    import modelo.Produto;
-    import java.util.List;
-    import javax.swing.JOptionPane;
-    import javax.swing.table.DefaultTableModel;
+import dao.ProdutoDAO;
+import modelo.Produto;
+import java.util.List;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 public class FrmGerenciaProduto extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmGerenciaProduto.class.getName());
 
-    
     public FrmGerenciaProduto() {
         initComponents();
+        carregarTabela();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -123,24 +122,24 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
         int linha = tblProdutos.getSelectedRow();
 
-if (linha == -1) {
-    JOptionPane.showMessageDialog(this, "Selecione um produto.");
-    return;
-}
+        if (linha == -1) {
+            JOptionPane.showMessageDialog(this, "Selecione um produto.");
+            return;
+        }
 
-    int id = Integer.parseInt(tblProdutos.getValueAt(linha, 0).toString());
+        int id = Integer.parseInt(tblProdutos.getValueAt(linha, 0).toString());
 
-ProdutoDAO dao = new ProdutoDAO();
-dao.excluir(id);
+        ProdutoDAO dao = new ProdutoDAO();
+        dao.excluir(id);
 
-JOptionPane.showMessageDialog(this, "Produto excluído!");
-    carregarTabela();
+        JOptionPane.showMessageDialog(this, "Produto excluído!");
+        carregarTabela();
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
@@ -184,6 +183,34 @@ JOptionPane.showMessageDialog(this, "Produto excluído!");
     // End of variables declaration//GEN-END:variables
 
     private void carregarTabela() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        modelo.addColumn("ID");
+        modelo.addColumn("Nome");
+        modelo.addColumn("Preço");
+        modelo.addColumn("Unidade");
+        modelo.addColumn("Estoque");
+        modelo.addColumn("Mínimo");
+        modelo.addColumn("Máximo");
+        modelo.addColumn("Categoria");
+
+        ProdutoDAO dao = new ProdutoDAO();
+        List<Produto> lista = dao.listar();
+
+        for (Produto p : lista) {
+            modelo.addRow(new Object[]{
+                p.getId(),
+                p.getNome(),
+                p.getPrecoUnitario(),
+                p.getUnidade(),
+                p.getQuantidadeEstoque(),
+                p.getQuantidadeMinima(),
+                p.getQuantidadeMaxima(),
+                p.getCategoriaId()
+            });
+        }
+
+        tblProdutos.setModel(modelo);
     }
 }

@@ -9,7 +9,7 @@ public class ProdutoDAO {
 
     public void cadastrar(Produto produto) {
         String sql = "INSERT INTO produto "
-                + "(nome, preco_unitario, unidade, quantidade_estoque, quantidade_minima, quantidade_maxima, categoria_id) "
+                + "(nome, preco_unitario, unidade, quantidade_estoque, quantidade_minima, quantidade_maxima, id_categoria) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (Connection conn = Conexao.conectar();
@@ -41,14 +41,14 @@ public class ProdutoDAO {
             while (rs.next()) {
                 Produto p = new Produto();
 
-                p.setId(rs.getInt("id"));
+                p.setId(rs.getInt("id_produto"));
                 p.setNome(rs.getString("nome"));
                 p.setPrecoUnitario(rs.getDouble("preco_unitario"));
                 p.setUnidade(rs.getString("unidade"));
                 p.setQuantidadeEstoque(rs.getInt("quantidade_estoque"));
                 p.setQuantidadeMinima(rs.getInt("quantidade_minima"));
                 p.setQuantidadeMaxima(rs.getInt("quantidade_maxima"));
-                p.setCategoriaId(rs.getInt("categoria_id"));
+                p.setCategoriaId(rs.getInt("id_categoria"));
 
                 lista.add(p);
             }
@@ -62,7 +62,7 @@ public class ProdutoDAO {
 
     public void editar(Produto produto) {
         String sql = "UPDATE produto SET nome=?, preco_unitario=?, unidade=?, quantidade_estoque=?, "
-                + "quantidade_minima=?, quantidade_maxima=?, categoria_id=? WHERE id=?";
+                + "quantidade_minima=?, quantidade_maxima=?, id_categoria=? WHERE id_produto=?";
 
         try (Connection conn = Conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -84,7 +84,7 @@ public class ProdutoDAO {
     }
 
     public void excluir(int id) {
-        String sql = "DELETE FROM produto WHERE id=?";
+        String sql = "DELETE FROM produto WHERE id_produto=?";
 
         try (Connection conn = Conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
