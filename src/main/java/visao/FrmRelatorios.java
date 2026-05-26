@@ -1,6 +1,11 @@
 package visao;
 
+import dao.Conexao;
 import java.awt.Dimension;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -98,15 +103,17 @@ public class FrmRelatorios extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        scrRelatorio.setName(""); // NOI18N
+
         tblRelatorio.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Produto", "Preço", "Quantidade"
+                "Produto", "Preço", "Quantidade em estoque", "Categoria"
             }
         ));
         scrRelatorio.setViewportView(tblRelatorio);
@@ -157,6 +164,55 @@ public class FrmRelatorios extends javax.swing.JFrame {
 
     private void btnListaPrecosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaPrecosActionPerformed
         // TODO add your handling code here:
+        try {
+
+            Connection conn = Conexao.conectar();
+
+            String sql
+                    = "SELECT "
+                    + "p.nome AS produto, "
+                    + "p.preco_unitario, "
+                    + "p.quantidade_estoque, "
+                    + "c.nome AS categoria "
+                    + "FROM produto p "
+                    + "INNER JOIN categoria c "
+                    + "ON p.id_categoria = c.id_categoria "
+                    + "ORDER BY p.nome";
+
+            PreparedStatement stmt
+                    = conn.prepareStatement(sql);
+
+            ResultSet rs
+                    = stmt.executeQuery();
+
+            DefaultTableModel modelo
+                    = (DefaultTableModel) tblRelatorio.getModel();
+
+            modelo.setRowCount(0);
+
+            while (rs.next()) {
+
+                modelo.addRow(new Object[]{
+                    rs.getString("produto"),
+                    rs.getDouble("preco_unitario"),
+                    rs.getInt("quantidade_estoque"),
+                    rs.getString("categoria")
+                });
+            }
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro ao gerar relatório!"
+            );
+
+            System.out.println(e.getMessage());
+        }
     }//GEN-LAST:event_btnListaPrecosActionPerformed
 
     /**
@@ -183,6 +239,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new FrmRelatorios().setVisible(true));
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCategoria;
