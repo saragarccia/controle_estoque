@@ -66,6 +66,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
         btnListaPrecos.addActionListener(this::btnListaPrecosActionPerformed);
 
         btnEstoqueBaixo.setText("Estoque Baixo");
+        btnEstoqueBaixo.addActionListener(this::btnEstoqueBaixoActionPerformed);
 
         btnCategoria.setText("Categoria");
 
@@ -214,6 +215,67 @@ public class FrmRelatorios extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnListaPrecosActionPerformed
+
+    private void btnEstoqueBaixoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueBaixoActionPerformed
+        // TODO add your handling code here:
+        try {
+
+        Connection conn = Conexao.conectar();
+
+        String sql =
+
+            "SELECT " +
+            "nome, " +
+            "quantidade_estoque, " +
+            "quantidade_minima " +
+
+            "FROM produto " +
+
+            "WHERE quantidade_estoque < quantidade_minima";
+
+        PreparedStatement stmt =
+                conn.prepareStatement(sql);
+
+        ResultSet rs =
+                stmt.executeQuery();
+
+        DefaultTableModel modelo =
+                new DefaultTableModel();
+
+        modelo.addColumn("Produto");
+
+        modelo.addColumn("Quantidade em Estoque");
+
+        modelo.addColumn("Quantidade Mínima");
+
+        while(rs.next()) {
+
+            modelo.addRow(new Object[] {
+
+                rs.getString("nome"),
+
+                rs.getInt("quantidade_estoque"),
+
+                rs.getInt("quantidade_minima")
+            });
+        }
+
+        tblRelatorio.setModel(modelo);
+
+        rs.close();
+        stmt.close();
+        conn.close();
+
+    } catch (Exception e) {
+
+        JOptionPane.showMessageDialog(
+                null,
+                "Erro ao gerar relatório!"
+        );
+
+        System.out.println(e.getMessage());
+    }
+    }//GEN-LAST:event_btnEstoqueBaixoActionPerformed
 
     /**
      * @param args the command line arguments
