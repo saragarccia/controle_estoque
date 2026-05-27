@@ -187,9 +187,15 @@ public class FrmRelatorios extends javax.swing.JFrame {
                     = stmt.executeQuery();
 
             DefaultTableModel modelo
-                    = (DefaultTableModel) tblRelatorio.getModel();
+                    = new DefaultTableModel();
 
-            modelo.setRowCount(0);
+            modelo.addColumn("Produto");
+
+            modelo.addColumn("Preço");
+
+            modelo.addColumn("Quantidade em Estoque");
+
+            modelo.addColumn("Categoria");
 
             while (rs.next()) {
 
@@ -200,6 +206,8 @@ public class FrmRelatorios extends javax.swing.JFrame {
                     rs.getString("categoria")
                 });
             }
+
+            tblRelatorio.setModel(modelo);
 
             rs.close();
             stmt.close();
@@ -220,61 +228,55 @@ public class FrmRelatorios extends javax.swing.JFrame {
         // TODO add your handling code here:
         try {
 
-        Connection conn = Conexao.conectar();
+            Connection conn = Conexao.conectar();
 
-        String sql =
+            String sql
+                    = "SELECT "
+                    + "nome, "
+                    + "quantidade_estoque, "
+                    + "quantidade_minima "
+                    + "FROM produto "
+                    + "WHERE quantidade_estoque < quantidade_minima";
 
-            "SELECT " +
-            "nome, " +
-            "quantidade_estoque, " +
-            "quantidade_minima " +
+            PreparedStatement stmt
+                    = conn.prepareStatement(sql);
 
-            "FROM produto " +
+            ResultSet rs
+                    = stmt.executeQuery();
 
-            "WHERE quantidade_estoque < quantidade_minima";
+            DefaultTableModel modelo
+                    = new DefaultTableModel();
 
-        PreparedStatement stmt =
-                conn.prepareStatement(sql);
+            modelo.addColumn("Produto");
 
-        ResultSet rs =
-                stmt.executeQuery();
+            modelo.addColumn("Quantidade em Estoque");
 
-        DefaultTableModel modelo =
-                new DefaultTableModel();
+            modelo.addColumn("Quantidade Mínima");
 
-        modelo.addColumn("Produto");
+            while (rs.next()) {
 
-        modelo.addColumn("Quantidade em Estoque");
+                modelo.addRow(new Object[]{
+                    rs.getString("nome"),
+                    rs.getInt("quantidade_estoque"),
+                    rs.getInt("quantidade_minima")
+                });
+            }
 
-        modelo.addColumn("Quantidade Mínima");
+            tblRelatorio.setModel(modelo);
 
-        while(rs.next()) {
+            rs.close();
+            stmt.close();
+            conn.close();
 
-            modelo.addRow(new Object[] {
+        } catch (Exception e) {
 
-                rs.getString("nome"),
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro ao gerar relatório!"
+            );
 
-                rs.getInt("quantidade_estoque"),
-
-                rs.getInt("quantidade_minima")
-            });
+            System.out.println(e.getMessage());
         }
-
-        tblRelatorio.setModel(modelo);
-
-        rs.close();
-        stmt.close();
-        conn.close();
-
-    } catch (Exception e) {
-
-        JOptionPane.showMessageDialog(
-                null,
-                "Erro ao gerar relatório!"
-        );
-
-        System.out.println(e.getMessage());
-    }
     }//GEN-LAST:event_btnEstoqueBaixoActionPerformed
 
     /**
