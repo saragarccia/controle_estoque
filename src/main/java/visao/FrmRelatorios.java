@@ -69,6 +69,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
         btnEstoqueBaixo.addActionListener(this::btnEstoqueBaixoActionPerformed);
 
         btnCategoria.setText("Categoria");
+        btnCategoria.addActionListener(this::btnCategoriaActionPerformed);
 
         btnMovimentacoes.setText("Movimentações");
 
@@ -278,6 +279,60 @@ public class FrmRelatorios extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnEstoqueBaixoActionPerformed
+
+    private void btnCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriaActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            Connection conn = Conexao.conectar();
+
+            String sql
+                    = "SELECT "
+                    + "c.nome AS categoria, "
+                    + "COUNT(p.id_produto) "
+                    + "AS quantidade_produtos "
+                    + "FROM categoria c "
+                    + "LEFT JOIN produto p "
+                    + "ON c.id_categoria = p.id_categoria "
+                    + "GROUP BY c.nome";
+
+            PreparedStatement stmt
+                    = conn.prepareStatement(sql);
+
+            ResultSet rs
+                    = stmt.executeQuery();
+
+            DefaultTableModel modelo
+                    = new DefaultTableModel();
+
+            modelo.addColumn("Categoria");
+
+            modelo.addColumn("Quantidade de Produtos");
+
+            while (rs.next()) {
+
+                modelo.addRow(new Object[]{
+                    rs.getString("categoria"),
+                    rs.getInt("quantidade_produtos")
+                });
+            }
+
+            tblRelatorio.setModel(modelo);
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro ao gerar relatório!"
+            );
+
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btnCategoriaActionPerformed
 
     /**
      * @param args the command line arguments
