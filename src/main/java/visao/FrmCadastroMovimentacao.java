@@ -50,7 +50,7 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
 
         IblTitulo.setText("CADASTRO MOVIMENTAÇÃO");
 
-        IblProduto.setText("PRODUTO:");
+        IblProduto.setText("ID PRODUTO:");
 
         IblQuantidade.setText("QUANTIDADE:");
 
