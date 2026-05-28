@@ -70,6 +70,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         menuGerenciamentos.setText("Gerenciamentos");
 
         itemGerenciarProdutos.setText("Gerenciar Produtos");
+        itemGerenciarProdutos.addActionListener(this::itemGerenciarProdutosActionPerformed);
         menuGerenciamentos.add(itemGerenciarProdutos);
 
         itemGerenciarCategorias.setText("Gerenciar Categorias");
@@ -148,6 +149,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void itemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSairActionPerformed
         sairSistema();
     }//GEN-LAST:event_itemSairActionPerformed
+
+    private void itemGerenciarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGerenciarProdutosActionPerformed
+        abrirTelaGerenciarProduto();
+    }//GEN-LAST:event_itemGerenciarProdutosActionPerformed
     private void abrirTelaCategoria() {
 
         try {
@@ -221,6 +226,20 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         if (resposta == 0) {
             System.exit(0);
+        }
+    }
+
+    private void abrirTelaGerenciarProduto() {
+
+        try {
+            FrmGerenciaProduto telaGerenciarProduto = new FrmGerenciaProduto();
+            telaGerenciarProduto.setLocationRelativeTo(null);
+            telaGerenciarProduto.setVisible(true);
+        } catch (Exception erro) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Erro ao abrir a tela de gerenciamento de produtos: " + erro.getMessage()
+            );
         }
     }
 
