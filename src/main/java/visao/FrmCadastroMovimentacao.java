@@ -48,11 +48,14 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        IblTitulo.setText("CADASTRO MOVIMENTAÇÃO");
+        IblTitulo.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        IblTitulo.setText("Cadastro de Movimentação");
 
-        IblProduto.setText("ID PRODUTO:");
+        IblProduto.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        IblProduto.setText("Id produto:");
 
-        IblQuantidade.setText("QUANTIDADE:");
+        IblQuantidade.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        IblQuantidade.setText("Quantidade:");
 
         txtProduto.setColumns(25);
         txtProduto.addActionListener(this::txtProdutoActionPerformed);
@@ -60,25 +63,27 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
         txtQuantidade.setColumns(10);
         txtQuantidade.addActionListener(this::txtQuantidadeActionPerformed);
 
-        IblTipo.setText("TIPO:");
+        IblTipo.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        IblTipo.setText("Tipo:");
 
         cbTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Saída" }));
         cbTipo.addActionListener(this::cbTipoActionPerformed);
 
-        IblData.setText("DATA:");
+        IblData.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
+        IblData.setText("Data:");
 
         txtData.setColumns(10);
 
-        btnNovo.setText("NOVO");
+        btnNovo.setText("Novo");
         btnNovo.addActionListener(this::btnNovoActionPerformed);
 
-        bntSalvar.setText("SALVAR");
+        bntSalvar.setText("Salvar");
         bntSalvar.addActionListener(this::bntSalvarActionPerformed);
 
-        bntLimpar.setText("LIMPAR");
+        bntLimpar.setText("Limpar");
         bntLimpar.addActionListener(this::bntLimparActionPerformed);
 
-        bntSair.setText("SAIR");
+        bntSair.setText("Fechar");
         bntSair.addActionListener(this::bntSairActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -89,6 +94,27 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(13, 13, 13)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(IblProduto)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(IblQuantidade)
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(txtQuantidade, javax.swing.GroupLayout.DEFAULT_SIZE, 99, Short.MAX_VALUE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(IblTipo)
+                                    .addComponent(IblData))
+                                .addGap(60, 60, 60)
+                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addComponent(btnNovo)
                         .addGap(18, 18, 18)
                         .addComponent(bntSalvar)
@@ -96,27 +122,7 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
                         .addComponent(bntLimpar)
                         .addGap(18, 18, 18)
                         .addComponent(bntSair)
-                        .addContainerGap(52, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(IblData)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(IblProduto)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtProduto, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(IblQuantidade)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(txtQuantidade, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(IblTipo)
-                                .addGap(18, 18, 18)
-                                .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 196, Short.MAX_VALUE))))
+                        .addContainerGap(52, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(IblTitulo)
@@ -139,11 +145,11 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(IblTipo)
                     .addComponent(cbTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(IblData))
-                .addGap(55, 55, 55)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnNovo)
                     .addComponent(bntSalvar)

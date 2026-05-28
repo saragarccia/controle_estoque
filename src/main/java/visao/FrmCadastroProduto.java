@@ -51,7 +51,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         btnCadastrar.setText("Cadastrar");
         btnCadastrar.addActionListener(this::btnCadastrarActionPerformed);
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel3.setText("  Cadastro de Produto ");
 
         jLabel4.setText("Preço Unitário:");

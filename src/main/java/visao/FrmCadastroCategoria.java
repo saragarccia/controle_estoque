@@ -75,7 +75,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
         lblEmbalagem = new javax.swing.JLabel();
         btnLimpar = new javax.swing.JButton();
         btnSalvar = new javax.swing.JButton();
-        btnCancelar = new javax.swing.JButton();
+        btnFechar = new javax.swing.JButton();
         cmbTamanho = new javax.swing.JComboBox<>();
         cmbEmbalagem = new javax.swing.JComboBox<>();
         txtNome = new javax.swing.JTextField();
@@ -95,8 +95,8 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
         btnSalvar.setText("Salvar");
         btnSalvar.addActionListener(this::btnSalvarActionPerformed);
 
-        btnCancelar.setText("Cancelar");
-        btnCancelar.addActionListener(this::btnCancelarActionPerformed);
+        btnFechar.setText("Fechar");
+        btnFechar.addActionListener(this::btnFecharActionPerformed);
 
         cmbTamanho.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "", "Pequeno", "Médio", "Grande" }));
 
@@ -117,8 +117,8 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
                         .addComponent(btnSalvar)
                         .addGap(45, 45, 45)
                         .addComponent(btnLimpar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                        .addComponent(btnCancelar))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
+                        .addComponent(btnFechar))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTamanho)
@@ -156,7 +156,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnLimpar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSalvar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnFechar, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(15, 15, 15))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmbEmbalagem, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -201,17 +201,16 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_LimparCadastroActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_txtNomeActionPerformed
 
     private void CancelarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarCadastroActionPerformed
         this.dispose();
     }//GEN-LAST:event_CancelarCadastroActionPerformed
 
-    private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
-        // TODO add your handling code here:
-        CancelarCadastroActionPerformed(evt);
-    }//GEN-LAST:event_btnCancelarActionPerformed
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnFecharActionPerformed
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {
         SalvarCadastroActionPerformed(evt);
     }
@@ -246,7 +245,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnCancelar;
+    private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnLimpar;
     private javax.swing.JButton btnSalvar;
     private javax.swing.JComboBox<String> cmbEmbalagem;
