@@ -126,20 +126,47 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFecharActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
+
         int linha = tblProdutos.getSelectedRow();
 
         if (linha == -1) {
-            JOptionPane.showMessageDialog(this, "Selecione um produto.");
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Selecione um produto."
+            );
             return;
         }
 
-        int id = Integer.parseInt(tblProdutos.getValueAt(linha, 0).toString());
+        Object[] opcoes = {"Sim", "Não"};
 
-        ProdutoDAO dao = new ProdutoDAO();
-        dao.excluir(id);
+        int confirmacao = JOptionPane.showOptionDialog(
+                this,
+                "Tem certeza que deseja excluir este produto?",
+                "Confirmar exclusão",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcoes,
+                opcoes[0]
+        );
 
-        JOptionPane.showMessageDialog(this, "Produto excluído!");
-        carregarTabela();
+        if (confirmacao == JOptionPane.YES_OPTION) {
+
+            int id = Integer.parseInt(
+                    tblProdutos.getValueAt(linha, 0).toString()
+            );
+
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.excluir(id);
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Produto excluído!"
+            );
+
+            carregarTabela();
+        }
+
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     /**
