@@ -75,6 +75,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         menuRelatorios.setText("Relatórios");
 
         itemRelatorio.setText("Gerar Relatório");
+        itemRelatorio.addActionListener(this::itemRelatorioActionPerformed);
         menuRelatorios.add(itemRelatorio);
 
         jMenuBar1.add(menuRelatorios);
@@ -123,6 +124,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void itemCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCategoriasActionPerformed
         abrirTelaCategoria();
     }//GEN-LAST:event_itemCategoriasActionPerformed
+
+    private void itemRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRelatorioActionPerformed
+        abrirTelaRelatorio();
+    }//GEN-LAST:event_itemRelatorioActionPerformed
     private void abrirTelaCategoria() {
 
         try {
@@ -161,6 +166,20 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(
                     this,
                     "Erro ao abrir a tela de movimentações: " + erro.getMessage()
+            );
+        }
+    }
+
+    private void abrirTelaRelatorio() {
+
+        try {
+            FrmRelatorios telaRelatorio = new FrmRelatorios();
+            telaRelatorio.setLocationRelativeTo(null);
+            telaRelatorio.setVisible(true);
+        } catch (Exception erro) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Erro ao abrir a tela de relatórios: " + erro.getMessage()
             );
         }
     }
