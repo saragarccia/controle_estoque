@@ -37,7 +37,7 @@ public class FrmGerenciaMovimentacao extends javax.swing.JFrame {
         cbTipo = new javax.swing.JComboBox<>();
         btnSalvar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         lblTitulo.setText("CADASTRAR MOVIMENTAÇÃO");
         lblTitulo.setName(""); // NOI18N

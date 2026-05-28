@@ -55,7 +55,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
         scrRelatorio = new javax.swing.JScrollPane();
         tblRelatorio = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         lblTitulo.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N

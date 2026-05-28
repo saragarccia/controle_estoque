@@ -49,7 +49,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(jTable1);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         tblProdutos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

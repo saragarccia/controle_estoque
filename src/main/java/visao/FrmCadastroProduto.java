@@ -42,7 +42,7 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
 
         txtNome5.addActionListener(this::txtNome5ActionPerformed);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Nome:");
 

@@ -46,7 +46,7 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
         bntLimpar = new javax.swing.JButton();
         bntSair = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         IblTitulo.setText("CADASTRO MOVIMENTAÇÃO");
 
