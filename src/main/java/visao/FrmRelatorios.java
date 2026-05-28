@@ -75,6 +75,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
         btnMovimentacoes.addActionListener(this::btnMovimentacoesActionPerformed);
 
         btnFinanceiro.setText("Financeiro");
+        btnFinanceiro.addActionListener(this::btnFinanceiroActionPerformed);
 
         javax.swing.GroupLayout pnlBotoesLayout = new javax.swing.GroupLayout(pnlBotoes);
         pnlBotoes.setLayout(pnlBotoesLayout);
@@ -394,6 +395,65 @@ public class FrmRelatorios extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnMovimentacoesActionPerformed
+
+    private void btnFinanceiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinanceiroActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            Connection conn = Conexao.conectar();
+
+            String sql
+                    = "SELECT "
+                    + "nome, "
+                    + "quantidade_estoque, "
+                    + "preco_unitario, "
+                    + "(quantidade_estoque * preco_unitario) "
+                    + "AS valor_total "
+                    + "FROM produto";
+
+            PreparedStatement stmt
+                    = conn.prepareStatement(sql);
+
+            ResultSet rs
+                    = stmt.executeQuery();
+
+            DefaultTableModel modelo
+                    = new DefaultTableModel();
+
+            modelo.addColumn("Produto");
+
+            modelo.addColumn("Quantidade em Estoque");
+
+            modelo.addColumn("Preço Unitário");
+
+            modelo.addColumn("Valor Total");
+
+            while (rs.next()) {
+
+                modelo.addRow(new Object[]{
+                    rs.getString("nome"),
+                    rs.getInt("quantidade_estoque"),
+                    rs.getDouble("preco_unitario"),
+                    rs.getDouble("valor_total")
+                });
+            }
+
+            tblRelatorio.setModel(modelo);
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro ao gerar relatório!"
+            );
+
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btnFinanceiroActionPerformed
 
     /**
      * @param args the command line arguments
