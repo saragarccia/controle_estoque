@@ -1,19 +1,20 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package visao;
 
 /**
+ * Tela principal do sistema de controle de estoque. Responsável pela navegação
+ * entre cadastros, gerenciamentos, movimentações, relatórios e saída do
+ * sistema.
  *
- * @author dcris
+ * @author Deise Cristine Souza Soares
+ * @version 1.0
  */
 public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmMenuPrincipal.class.getName());
 
     /**
-     * Creates new form FrmMenuPrincipal
+     * Construtor da tela principal. Inicializa os componentes gráficos e
+     * centraliza a janela.
      */
     public FrmMenuPrincipal() {
         initComponents();
@@ -167,6 +168,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void itemGerenciarMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGerenciarMovimentacaoActionPerformed
         abrirTelaGerenciarMovimentacao();
     }//GEN-LAST:event_itemGerenciarMovimentacaoActionPerformed
+    /**
+     * Abre a tela de cadastro de categorias.
+     */
     private void abrirTelaCategoria() {
 
         try {
@@ -181,6 +185,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Abre a tela de cadastro de produtos.
+     */
     private void abrirTelaProduto() {
 
         try {
@@ -195,6 +202,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Abre a tela de cadastro de movimentações.
+     */
     private void abrirTelaMovimentacao() {
 
         try {
@@ -209,6 +219,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Abre a tela de relatórios.
+     */
     private void abrirTelaRelatorio() {
 
         try {
@@ -223,6 +236,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Exibe uma confirmação e encerra o sistema caso o usuário confirme.
+     */
     private void sairSistema() {
 
         Object[] opcoes = {"Sim", "Não"};
@@ -243,6 +259,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Abre a tela de gerenciamento de produtos.
+     */
     private void abrirTelaGerenciarProduto() {
 
         try {
@@ -257,6 +276,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Abre a tela de gerenciamento de categorias.
+     */
     private void abrirTelaGerenciarCategoria() {
 
         try {
@@ -271,6 +293,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * Abre a tela de gerenciamento de movimentação.
+     */
     private void abrirTelaGerenciarMovimentacao() {
 
         try {
@@ -286,7 +311,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     /**
-     * @param args the command line arguments
+     * Método principal da tela. Executa a interface gráfica do menu principal.
+     *
+     * @param args argumentos da linha de comando
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
