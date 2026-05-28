@@ -59,6 +59,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         menuCadastros.add(itemProdutos);
 
         itemCategorias.setText("Categorias");
+        itemCategorias.addActionListener(this::itemCategoriasActionPerformed);
         menuCadastros.add(itemCategorias);
 
         jMenuBar1.add(menuCadastros);
@@ -118,6 +119,24 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void itemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProdutosActionPerformed
         abrirTelaProduto();
     }//GEN-LAST:event_itemProdutosActionPerformed
+
+    private void itemCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemCategoriasActionPerformed
+        abrirTelaCategoria();
+    }//GEN-LAST:event_itemCategoriasActionPerformed
+    private void abrirTelaCategoria() {
+
+        try {
+            FrmCadastroCategoria telaCategoria = new FrmCadastroCategoria();
+            telaCategoria.setLocationRelativeTo(null);
+            telaCategoria.setVisible(true);
+        } catch (Exception erro) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Erro ao abrir a tela de categorias: " + erro.getMessage()
+            );
+        }
+    }
+
     private void abrirTelaProduto() {
 
         try {
