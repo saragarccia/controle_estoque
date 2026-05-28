@@ -141,7 +141,7 @@ public class FrmGerenciaMovimentacao extends javax.swing.JFrame {
     }//GEN-LAST:event_txtProdutoActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 
     /**

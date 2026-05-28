@@ -35,7 +35,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
                 15,
                 10
         ));
-        
+
         // Centraliza botão fechar no painel
         pnlFechar.setLayout(new java.awt.FlowLayout(
                 java.awt.FlowLayout.CENTER,
@@ -485,7 +485,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         // TODO add your handling code here:
-        
+
         dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 

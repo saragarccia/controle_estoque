@@ -1,4 +1,3 @@
-
 package visao;
 
 import dao.ProdutoDAO;
@@ -6,15 +5,13 @@ import modelo.Produto;
 import javax.swing.JOptionPane;
 
 public class FrmCadastroProduto extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCadastroProduto.class.getName());
 
-    
     public FrmCadastroProduto() {
         initComponents();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -182,75 +179,75 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtCategoriaIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaIdActionPerformed
-        
+
     }//GEN-LAST:event_txtCategoriaIdActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-     try {
-    Produto produto = new Produto();
+        try {
+            Produto produto = new Produto();
 
-    produto.setNome(txtNome.getText());
-    produto.setPrecoUnitario(Double.parseDouble(txtPrecoUnitario.getText()));
-    produto.setUnidade(txtUnidade.getText());
-    produto.setQuantidadeEstoque(Integer.parseInt(txtQuantidadeEstoque.getText()));
-    produto.setQuantidadeMinima(Integer.parseInt(txtQuantidadeMinima.getText()));
-    produto.setQuantidadeMaxima(Integer.parseInt(txtQuantidadeMaxima.getText()));
-    produto.setCategoriaId(Integer.parseInt(txtCategoriaId.getText()));
+            produto.setNome(txtNome.getText());
+            produto.setPrecoUnitario(Double.parseDouble(txtPrecoUnitario.getText()));
+            produto.setUnidade(txtUnidade.getText());
+            produto.setQuantidadeEstoque(Integer.parseInt(txtQuantidadeEstoque.getText()));
+            produto.setQuantidadeMinima(Integer.parseInt(txtQuantidadeMinima.getText()));
+            produto.setQuantidadeMaxima(Integer.parseInt(txtQuantidadeMaxima.getText()));
+            produto.setCategoriaId(Integer.parseInt(txtCategoriaId.getText()));
 
-    ProdutoDAO dao = new ProdutoDAO();
-    dao.cadastrar(produto);
+            ProdutoDAO dao = new ProdutoDAO();
+            dao.cadastrar(produto);
 
-    JOptionPane.showMessageDialog(this, "Produto cadastrado com sucesso!");
+            JOptionPane.showMessageDialog(this, "Produto cadastrado com sucesso!");
 
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(this, "Erro ao cadastrar produto: " + e.getMessage());
-}
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Erro ao cadastrar produto: " + e.getMessage());
+        }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-       this.dispose();
+        this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         txtNome.setText("");
-    txtPrecoUnitario.setText("");
-    txtUnidade.setText("");
-    txtQuantidadeEstoque.setText("");
-    txtQuantidadeMinima.setText("");
-    txtQuantidadeMaxima.setText("");
-    txtCategoriaId.setText("");
+        txtPrecoUnitario.setText("");
+        txtUnidade.setText("");
+        txtQuantidadeEstoque.setText("");
+        txtQuantidadeMinima.setText("");
+        txtQuantidadeMaxima.setText("");
+        txtCategoriaId.setText("");
     }//GEN-LAST:event_btnLimparActionPerformed
 
     private void txtPrecoUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoUnitarioActionPerformed
-        
+
     }//GEN-LAST:event_txtPrecoUnitarioActionPerformed
 
     private void txtQuantidadeEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeEstoqueActionPerformed
-        
+
     }//GEN-LAST:event_txtQuantidadeEstoqueActionPerformed
 
     private void txtUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnidadeActionPerformed
-       
+
     }//GEN-LAST:event_txtUnidadeActionPerformed
 
     private void txtQuantidadeMaximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeMaximaActionPerformed
-        
+
     }//GEN-LAST:event_txtQuantidadeMaximaActionPerformed
 
     private void txtNome5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNome5ActionPerformed
-       
+
     }//GEN-LAST:event_txtNome5ActionPerformed
 
     private void txtQuantidadeMinimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeMinimaActionPerformed
-        
+
     }//GEN-LAST:event_txtQuantidadeMinimaActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
-       
+
     }//GEN-LAST:event_txtNomeActionPerformed
 
     public static void main(String args[]) {
-       
+
         java.awt.EventQueue.invokeLater(() -> new FrmCadastroProduto().setVisible(true));
     }
 

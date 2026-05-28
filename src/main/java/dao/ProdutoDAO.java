@@ -12,8 +12,7 @@ public class ProdutoDAO {
                 + "(nome, preco_unitario, unidade, quantidade_estoque, quantidade_minima, quantidade_maxima, id_categoria) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
-        try (Connection conn = Conexao.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = Conexao.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, produto.getNome());
             stmt.setDouble(2, produto.getPrecoUnitario());
@@ -34,9 +33,7 @@ public class ProdutoDAO {
         List<Produto> lista = new ArrayList<>();
         String sql = "SELECT * FROM produto ORDER BY nome";
 
-        try (Connection conn = Conexao.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        try (Connection conn = Conexao.conectar(); PreparedStatement stmt = conn.prepareStatement(sql); ResultSet rs = stmt.executeQuery()) {
 
             while (rs.next()) {
                 Produto p = new Produto();
@@ -64,8 +61,7 @@ public class ProdutoDAO {
         String sql = "UPDATE produto SET nome=?, preco_unitario=?, unidade=?, quantidade_estoque=?, "
                 + "quantidade_minima=?, quantidade_maxima=?, id_categoria=? WHERE id_produto=?";
 
-        try (Connection conn = Conexao.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = Conexao.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, produto.getNome());
             stmt.setDouble(2, produto.getPrecoUnitario());
@@ -86,8 +82,7 @@ public class ProdutoDAO {
     public void excluir(int id) {
         String sql = "DELETE FROM produto WHERE id_produto=?";
 
-        try (Connection conn = Conexao.conectar();
-             PreparedStatement stmt = conn.prepareStatement(sql)) {
+        try (Connection conn = Conexao.conectar(); PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, id);
             stmt.executeUpdate();

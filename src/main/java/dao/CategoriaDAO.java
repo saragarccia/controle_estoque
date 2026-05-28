@@ -1,4 +1,3 @@
-
 package dao;
 
 import java.sql.Connection;
@@ -27,7 +26,7 @@ public class CategoriaDAO {
             comando.setString(3, categoria.getEmbalagem());
 
             comando.executeUpdate();
- 
+
             comando.close();
             conexao.close();
 

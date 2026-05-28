@@ -176,20 +176,20 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
         txtData.setText("");
         cbTipo.setSelectedIndex(0);
         txtProduto.requestFocus();
-        
+
     }//GEN-LAST:event_btnNovoActionPerformed
 
     private void bntSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSairActionPerformed
 
         dispose();
-        
+
     }//GEN-LAST:event_bntSairActionPerformed
 
     private void bntLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntLimparActionPerformed
-txtProduto.setText("");
-    txtQuantidade.setText("");
-    txtData.setText("");
-    cbTipo.setSelectedIndex(0);
+        txtProduto.setText("");
+        txtQuantidade.setText("");
+        txtData.setText("");
+        cbTipo.setSelectedIndex(0);
     }//GEN-LAST:event_bntLimparActionPerformed
 
     private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
@@ -223,31 +223,31 @@ txtProduto.setText("");
             dao.salvar(mov);
             int estoque = 50;
 
-if(tipo.equals("Entrada")) {
+            if (tipo.equals("Entrada")) {
 
-    estoque = estoque + Integer.parseInt(quantidade);
+                estoque = estoque + Integer.parseInt(quantidade);
 
-} else {
+            } else {
 
-    estoque = estoque - Integer.parseInt(quantidade);
+                estoque = estoque - Integer.parseInt(quantidade);
 
-}
+            }
 
-javax.swing.JOptionPane.showMessageDialog(null,
-"Estoque atual: " + estoque);
-if(estoque < 10){
+            javax.swing.JOptionPane.showMessageDialog(null,
+                    "Estoque atual: " + estoque);
+            if (estoque < 10) {
 
-    javax.swing.JOptionPane.showMessageDialog(null,
-    "Estoque mínimo atingido!");
+                javax.swing.JOptionPane.showMessageDialog(null,
+                        "Estoque mínimo atingido!");
 
-}
+            }
 
-if(estoque > 100){
+            if (estoque > 100) {
 
-    javax.swing.JOptionPane.showMessageDialog(null,
-    "Estoque máximo atingido!");
+                javax.swing.JOptionPane.showMessageDialog(null,
+                        "Estoque máximo atingido!");
 
-}
+            }
 
             javax.swing.JOptionPane.showMessageDialog(null,
                     "Movimentação salva com sucesso!");

@@ -1,7 +1,7 @@
 package modelo;
 
 public class Produto {
-    
+
     private int id;
     private String nome;
     private double precoUnitario;
@@ -47,8 +47,8 @@ public class Produto {
     }
 
     public Produto(int id, String nome, double precoUnitario, String unidade,
-                   int quantidadeEstoque, int quantidadeMinima,
-                   int quantidadeMaxima, int categoriaId) {
+            int quantidadeEstoque, int quantidadeMinima,
+            int quantidadeMaxima, int categoriaId) {
         this.id = id;
         this.nome = nome;
         this.precoUnitario = precoUnitario;
