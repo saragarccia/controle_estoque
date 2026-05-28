@@ -26,9 +26,6 @@ public class FrmRelatorios extends javax.swing.JFrame {
         // Centraliza a janela
         setLocationRelativeTo(null);
 
-        // Define tamanho mínimo da janela
-        setMinimumSize(new Dimension(1000, 700));
-
         // Define altura das linhas da tabela
         tblRelatorio.setRowHeight(25);
 
