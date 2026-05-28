@@ -72,6 +72,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
         btnCategoria.addActionListener(this::btnCategoriaActionPerformed);
 
         btnMovimentacoes.setText("Movimentações");
+        btnMovimentacoes.addActionListener(this::btnMovimentacoesActionPerformed);
 
         btnFinanceiro.setText("Financeiro");
 
@@ -333,6 +334,66 @@ public class FrmRelatorios extends javax.swing.JFrame {
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_btnCategoriaActionPerformed
+
+    private void btnMovimentacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimentacoesActionPerformed
+        // TODO add your handling code here:
+        try {
+
+            Connection conn = Conexao.conectar();
+
+            String sql
+                    = "SELECT "
+                    + "p.nome, "
+                    + "m.data_movimentacao, "
+                    + "m.quantidade_movimentada, "
+                    + "m.tipo_movimentacao "
+                    + "FROM movimentacao m "
+                    + "INNER JOIN produto p "
+                    + "ON m.id_produto = p.id_produto";
+
+            PreparedStatement stmt
+                    = conn.prepareStatement(sql);
+
+            ResultSet rs
+                    = stmt.executeQuery();
+
+            DefaultTableModel modelo
+                    = new DefaultTableModel();
+
+            modelo.addColumn("Produto");
+
+            modelo.addColumn("Data da Movimentação");
+
+            modelo.addColumn("Quantidade");
+
+            modelo.addColumn("Tipo");
+
+            while (rs.next()) {
+
+                modelo.addRow(new Object[]{
+                    rs.getString("nome"),
+                    rs.getString("data_movimentacao"),
+                    rs.getInt("quantidade_movimentada"),
+                    rs.getString("tipo_movimentacao")
+                });
+            }
+
+            tblRelatorio.setModel(modelo);
+
+            rs.close();
+            stmt.close();
+            conn.close();
+
+        } catch (Exception e) {
+
+            JOptionPane.showMessageDialog(
+                    null,
+                    "Erro ao gerar relatório!"
+            );
+
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_btnMovimentacoesActionPerformed
 
     /**
      * @param args the command line arguments
