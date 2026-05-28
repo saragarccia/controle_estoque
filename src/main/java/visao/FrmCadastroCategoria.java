@@ -190,7 +190,7 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
         if (sucesso) {
             JOptionPane.showMessageDialog(this, "Categoria salva com sucesso!");
-            this.dispose();
+            limparCampos();
         } else {
             JOptionPane.showMessageDialog(this, "Erro ao salvar categoria.");
         }

@@ -35,11 +35,11 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         lblSubtitulo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         menuCadastros = new javax.swing.JMenu();
-        itemProdutos = new javax.swing.JMenuItem();
         itemCategorias = new javax.swing.JMenuItem();
+        itemProdutos = new javax.swing.JMenuItem();
         menuGerenciamentos = new javax.swing.JMenu();
-        itemGerenciarProdutos = new javax.swing.JMenuItem();
         itemGerenciarCategorias = new javax.swing.JMenuItem();
+        itemGerenciarProdutos = new javax.swing.JMenuItem();
         menuMovimentacoes = new javax.swing.JMenu();
         itemRegistrarMovimentacao = new javax.swing.JMenuItem();
         itemGerenciarMovimentacao = new javax.swing.JMenuItem();
@@ -58,25 +58,25 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         menuCadastros.setText("Cadastros");
 
-        itemProdutos.setText("Produtos");
-        itemProdutos.addActionListener(this::itemProdutosActionPerformed);
-        menuCadastros.add(itemProdutos);
-
         itemCategorias.setText("Categorias");
         itemCategorias.addActionListener(this::itemCategoriasActionPerformed);
         menuCadastros.add(itemCategorias);
+
+        itemProdutos.setText("Produtos");
+        itemProdutos.addActionListener(this::itemProdutosActionPerformed);
+        menuCadastros.add(itemProdutos);
 
         jMenuBar1.add(menuCadastros);
 
         menuGerenciamentos.setText("Gerenciamentos");
 
-        itemGerenciarProdutos.setText("Gerenciar Produtos");
-        itemGerenciarProdutos.addActionListener(this::itemGerenciarProdutosActionPerformed);
-        menuGerenciamentos.add(itemGerenciarProdutos);
-
         itemGerenciarCategorias.setText("Gerenciar Categorias");
         itemGerenciarCategorias.addActionListener(this::itemGerenciarCategoriasActionPerformed);
         menuGerenciamentos.add(itemGerenciarCategorias);
+
+        itemGerenciarProdutos.setText("Gerenciar Produtos");
+        itemGerenciarProdutos.addActionListener(this::itemGerenciarProdutosActionPerformed);
+        menuGerenciamentos.add(itemGerenciarProdutos);
 
         jMenuBar1.add(menuGerenciamentos);
 
