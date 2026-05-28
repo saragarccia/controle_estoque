@@ -58,6 +58,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         menuCadastros.setText("Cadastros");
 
         itemProdutos.setText("Produtos");
+        itemProdutos.addActionListener(this::itemProdutosActionPerformed);
         menuCadastros.add(itemProdutos);
 
         itemCategorias.setText("Categorias");
@@ -116,6 +117,16 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void itemMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMovimentacaoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemMovimentacaoActionPerformed
+
+    private void itemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProdutosActionPerformed
+        // TODO add your handling code here:
+        abrirTelaProduto();
+    }//GEN-LAST:event_itemProdutosActionPerformed
+    private void abrirTelaProduto() {
+        FrmCadastroProduto telaProduto = new FrmCadastroProduto();
+        telaProduto.setLocationRelativeTo(null);
+        telaProduto.setVisible(true);
+    }
 
     /**
      * @param args the command line arguments
