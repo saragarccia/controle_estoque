@@ -31,7 +31,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
         lblTitulo = new javax.swing.JLabel();
         lblSubtitulo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -44,8 +43,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         itemRelatorio = new javax.swing.JMenuItem();
         menuSistema = new javax.swing.JMenu();
         itemSair = new javax.swing.JMenuItem();
-
-        jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -119,13 +116,20 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemMovimentacaoActionPerformed
 
     private void itemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProdutosActionPerformed
-        // TODO add your handling code here:
         abrirTelaProduto();
     }//GEN-LAST:event_itemProdutosActionPerformed
     private void abrirTelaProduto() {
-        FrmCadastroProduto telaProduto = new FrmCadastroProduto();
-        telaProduto.setLocationRelativeTo(null);
-        telaProduto.setVisible(true);
+
+        try {
+            FrmCadastroProduto telaProduto = new FrmCadastroProduto();
+            telaProduto.setLocationRelativeTo(null);
+            telaProduto.setVisible(true);
+        } catch (Exception erro) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Erro ao abrir a tela de produtos: " + erro.getMessage()
+            );
+        }
     }
 
     /**
@@ -160,7 +164,6 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem itemRelatorio;
     private javax.swing.JMenuItem itemSair;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JMenu menuCadastros;
