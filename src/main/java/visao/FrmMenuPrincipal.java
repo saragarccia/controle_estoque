@@ -113,7 +113,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void itemMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMovimentacaoActionPerformed
-        // TODO add your handling code here:
+        abrirTelaMovimentacao();
     }//GEN-LAST:event_itemMovimentacaoActionPerformed
 
     private void itemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProdutosActionPerformed
@@ -147,6 +147,20 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(
                     this,
                     "Erro ao abrir a tela de produtos: " + erro.getMessage()
+            );
+        }
+    }
+
+    private void abrirTelaMovimentacao() {
+
+        try {
+            FrmCadastroMovimentacao telaMovimentacao = new FrmCadastroMovimentacao();
+            telaMovimentacao.setLocationRelativeTo(null);
+            telaMovimentacao.setVisible(true);
+        } catch (Exception erro) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Erro ao abrir a tela de movimentações: " + erro.getMessage()
             );
         }
     }
