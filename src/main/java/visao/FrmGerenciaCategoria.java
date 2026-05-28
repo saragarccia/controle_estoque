@@ -197,7 +197,7 @@ public class FrmGerenciaCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_AtualizarActionPerformed
 
     private void FecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FecharActionPerformed
-        System.exit(0);
+        this.dispose();
     }//GEN-LAST:event_FecharActionPerformed
 
     /**
