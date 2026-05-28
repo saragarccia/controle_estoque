@@ -41,7 +41,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         itemGerenciarProdutos = new javax.swing.JMenuItem();
         itemGerenciarCategorias = new javax.swing.JMenuItem();
         menuMovimentacoes = new javax.swing.JMenu();
-        itemMovimentacao = new javax.swing.JMenuItem();
+        itemRegistrarMovimentacao = new javax.swing.JMenuItem();
+        itemGerenciarMovimentacao = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
         itemRelatorio = new javax.swing.JMenuItem();
         menuSistema = new javax.swing.JMenu();
@@ -81,9 +82,13 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
         menuMovimentacoes.setText("Movimentações");
 
-        itemMovimentacao.setText("Registrar Movimentação");
-        itemMovimentacao.addActionListener(this::itemMovimentacaoActionPerformed);
-        menuMovimentacoes.add(itemMovimentacao);
+        itemRegistrarMovimentacao.setText("Registrar Movimentação");
+        itemRegistrarMovimentacao.addActionListener(this::itemRegistrarMovimentacaoActionPerformed);
+        menuMovimentacoes.add(itemRegistrarMovimentacao);
+
+        itemGerenciarMovimentacao.setText("Gerenciar Movimentação");
+        itemGerenciarMovimentacao.addActionListener(this::itemGerenciarMovimentacaoActionPerformed);
+        menuMovimentacoes.add(itemGerenciarMovimentacao);
 
         jMenuBar1.add(menuMovimentacoes);
 
@@ -131,9 +136,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void itemMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMovimentacaoActionPerformed
+    private void itemRegistrarMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRegistrarMovimentacaoActionPerformed
         abrirTelaMovimentacao();
-    }//GEN-LAST:event_itemMovimentacaoActionPerformed
+    }//GEN-LAST:event_itemRegistrarMovimentacaoActionPerformed
 
     private void itemProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemProdutosActionPerformed
         abrirTelaProduto();
@@ -158,6 +163,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void itemGerenciarCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGerenciarCategoriasActionPerformed
         abrirTelaGerenciarCategoria();
     }//GEN-LAST:event_itemGerenciarCategoriasActionPerformed
+
+    private void itemGerenciarMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGerenciarMovimentacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_itemGerenciarMovimentacaoActionPerformed
     private void abrirTelaCategoria() {
 
         try {
@@ -290,9 +299,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem itemCategorias;
     private javax.swing.JMenuItem itemGerenciarCategorias;
+    private javax.swing.JMenuItem itemGerenciarMovimentacao;
     private javax.swing.JMenuItem itemGerenciarProdutos;
-    private javax.swing.JMenuItem itemMovimentacao;
     private javax.swing.JMenuItem itemProdutos;
+    private javax.swing.JMenuItem itemRegistrarMovimentacao;
     private javax.swing.JMenuItem itemRelatorio;
     private javax.swing.JMenuItem itemSair;
     private javax.swing.JMenuBar jMenuBar1;

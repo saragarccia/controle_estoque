@@ -55,12 +55,20 @@
             <Property name="text" type="java.lang.String" value="Movimenta&#xe7;&#xf5;es"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="itemMovimentacao">
+            <MenuItem class="javax.swing.JMenuItem" name="itemRegistrarMovimentacao">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Registrar Movimenta&#xe7;&#xe3;o"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemMovimentacaoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemRegistrarMovimentacaoActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemGerenciarMovimentacao">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gerenciar Movimenta&#xe7;&#xe3;o"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="itemGerenciarMovimentacaoActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
