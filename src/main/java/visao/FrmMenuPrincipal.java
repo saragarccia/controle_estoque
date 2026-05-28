@@ -83,6 +83,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         menuSistema.setText("Sistema");
 
         itemSair.setText("Sair");
+        itemSair.addActionListener(this::itemSairActionPerformed);
         menuSistema.add(itemSair);
 
         jMenuBar1.add(menuSistema);
@@ -128,6 +129,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void itemRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemRelatorioActionPerformed
         abrirTelaRelatorio();
     }//GEN-LAST:event_itemRelatorioActionPerformed
+
+    private void itemSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemSairActionPerformed
+        sairSistema();
+    }//GEN-LAST:event_itemSairActionPerformed
     private void abrirTelaCategoria() {
 
         try {
@@ -181,6 +186,26 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
                     this,
                     "Erro ao abrir a tela de relatórios: " + erro.getMessage()
             );
+        }
+    }
+
+    private void sairSistema() {
+
+        Object[] opcoes = {"Sim", "Não"};
+
+        int resposta = javax.swing.JOptionPane.showOptionDialog(
+                this,
+                "Deseja sair do sistema?",
+                "Confirmação",
+                javax.swing.JOptionPane.YES_NO_OPTION,
+                javax.swing.JOptionPane.QUESTION_MESSAGE,
+                null,
+                opcoes,
+                opcoes[0]
+        );
+
+        if (resposta == 0) {
+            System.exit(0);
         }
     }
 
