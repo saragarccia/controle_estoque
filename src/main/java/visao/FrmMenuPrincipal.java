@@ -74,6 +74,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         menuGerenciamentos.add(itemGerenciarProdutos);
 
         itemGerenciarCategorias.setText("Gerenciar Categorias");
+        itemGerenciarCategorias.addActionListener(this::itemGerenciarCategoriasActionPerformed);
         menuGerenciamentos.add(itemGerenciarCategorias);
 
         jMenuBar1.add(menuGerenciamentos);
@@ -153,6 +154,10 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void itemGerenciarProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGerenciarProdutosActionPerformed
         abrirTelaGerenciarProduto();
     }//GEN-LAST:event_itemGerenciarProdutosActionPerformed
+
+    private void itemGerenciarCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGerenciarCategoriasActionPerformed
+        abrirTelaGerenciarCategoria();
+    }//GEN-LAST:event_itemGerenciarCategoriasActionPerformed
     private void abrirTelaCategoria() {
 
         try {
@@ -239,6 +244,20 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(
                     this,
                     "Erro ao abrir a tela de gerenciamento de produtos: " + erro.getMessage()
+            );
+        }
+    }
+
+    private void abrirTelaGerenciarCategoria() {
+
+        try {
+            FrmGerenciaCategoria telaGerenciarCategoria = new FrmGerenciaCategoria();
+            telaGerenciarCategoria.setLocationRelativeTo(null);
+            telaGerenciarCategoria.setVisible(true);
+        } catch (Exception erro) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Erro ao abrir a tela de gerenciamento de categorias: " + erro.getMessage()
             );
         }
     }
