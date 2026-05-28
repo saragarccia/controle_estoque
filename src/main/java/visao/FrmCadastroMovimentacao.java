@@ -8,6 +8,8 @@ import modelo.Movimentacao;
 
 import dao.MovimentacaoDAO;
 
+import dao.ProdutoDAO;
+
 /**
  *
  * @author dcris
@@ -194,6 +196,7 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
 
     private void bntSalvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntSalvarActionPerformed
         // TODO add your handling code here:
+
         String produto = txtProduto.getText();
 
         String quantidade = txtQuantidade.getText();
@@ -204,10 +207,13 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
 
         if (produto.isEmpty() || quantidade.isEmpty() || data.isEmpty()) {
 
-            javax.swing.JOptionPane.showMessageDialog(null,
-                    "Preencha todos os campos!");
+            javax.swing.JOptionPane.showMessageDialog(
+                    null,
+                    "Preencha todos os campos!"
+            );
 
         } else {
+
             Movimentacao mov = new Movimentacao();
 
             mov.setProduto(produto);
@@ -221,36 +227,54 @@ public class FrmCadastroMovimentacao extends javax.swing.JFrame {
             MovimentacaoDAO dao = new MovimentacaoDAO();
 
             dao.salvar(mov);
-            int estoque = 50;
+
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+
+            int idProduto = Integer.parseInt(produto);
+
+            int estoqueAtual = produtoDAO.buscarEstoque(idProduto);
+
+            int novoEstoque;
 
             if (tipo.equals("Entrada")) {
 
-                estoque = estoque + Integer.parseInt(quantidade);
+                novoEstoque = estoqueAtual + Integer.parseInt(quantidade);
 
             } else {
 
-                estoque = estoque - Integer.parseInt(quantidade);
+                novoEstoque = estoqueAtual - Integer.parseInt(quantidade);
 
             }
 
-            javax.swing.JOptionPane.showMessageDialog(null,
-                    "Estoque atual: " + estoque);
-            if (estoque < 10) {
+            produtoDAO.atualizarEstoque(idProduto, novoEstoque);
 
-                javax.swing.JOptionPane.showMessageDialog(null,
-                        "Estoque mínimo atingido!");
+            javax.swing.JOptionPane.showMessageDialog(
+                    null,
+                    "Estoque atualizado: " + novoEstoque
+            );
+
+            if (novoEstoque < 10) {
+
+                javax.swing.JOptionPane.showMessageDialog(
+                        null,
+                        "Estoque mínimo atingido!"
+                );
 
             }
 
-            if (estoque > 100) {
+            if (novoEstoque > 100) {
 
-                javax.swing.JOptionPane.showMessageDialog(null,
-                        "Estoque máximo atingido!");
+                javax.swing.JOptionPane.showMessageDialog(
+                        null,
+                        "Estoque máximo atingido!"
+                );
 
             }
 
-            javax.swing.JOptionPane.showMessageDialog(null,
-                    "Movimentação salva com sucesso!");
+            javax.swing.JOptionPane.showMessageDialog(
+                    null,
+                    "Movimentação salva com sucesso!"
+            );
         }
     }//GEN-LAST:event_bntSalvarActionPerformed
 

@@ -91,4 +91,50 @@ public class ProdutoDAO {
             System.out.println("Erro ao excluir produto: " + e.getMessage());
         }
     }
+    public void atualizarEstoque(int idProduto, int novoEstoque) {
+
+    String sql = "UPDATE produto SET quantidade_estoque=? WHERE id_produto=?";
+
+    try (Connection conn = Conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setInt(1, novoEstoque);
+        stmt.setInt(2, idProduto);
+
+        stmt.executeUpdate();
+
+    } catch (SQLException e) {
+
+        System.out.println("Erro ao atualizar estoque: " + e.getMessage());
+
+    }
+}
+
+public int buscarEstoque(int idProduto) {
+
+    int estoque = 0;
+
+    String sql = "SELECT quantidade_estoque FROM produto WHERE id_produto=?";
+
+    try (Connection conn = Conexao.conectar();
+         PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+        stmt.setInt(1, idProduto);
+
+        ResultSet rs = stmt.executeQuery();
+
+        if (rs.next()) {
+
+            estoque = rs.getInt("quantidade_estoque");
+
+        }
+
+    } catch (SQLException e) {
+
+        System.out.println("Erro ao buscar estoque: " + e.getMessage());
+
+    }
+
+    return estoque;
+}
 }
