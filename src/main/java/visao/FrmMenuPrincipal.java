@@ -32,60 +32,60 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuItem1 = new javax.swing.JMenuItem();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTitulo = new javax.swing.JLabel();
+        lblSubtitulo = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem6 = new javax.swing.JMenuItem();
+        menuCadastros = new javax.swing.JMenu();
+        itemProdutos = new javax.swing.JMenuItem();
+        itemCategorias = new javax.swing.JMenuItem();
+        menuMovimentacoes = new javax.swing.JMenu();
+        itemMovimentacao = new javax.swing.JMenuItem();
+        menuRelatorios = new javax.swing.JMenu();
+        itemRelatorio = new javax.swing.JMenuItem();
+        menuSistema = new javax.swing.JMenu();
+        itemSair = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
-        jLabel1.setText("Bem-vindo ao Sistema de Controle de Estoque");
+        lblTitulo.setFont(new java.awt.Font("Segoe UI", 1, 20)); // NOI18N
+        lblTitulo.setText("Bem-vindo ao Sistema de Controle de Estoque");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel2.setText("Use o menu acima para navegar entre as funcionalidades");
+        lblSubtitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lblSubtitulo.setText("Use o menu acima para navegar entre as funcionalidades");
 
-        jMenu1.setText("Cadastros");
+        menuCadastros.setText("Cadastros");
 
-        jMenuItem2.setText("Produtos");
-        jMenu1.add(jMenuItem2);
+        itemProdutos.setText("Produtos");
+        menuCadastros.add(itemProdutos);
 
-        jMenuItem3.setText("Categorias");
-        jMenu1.add(jMenuItem3);
+        itemCategorias.setText("Categorias");
+        menuCadastros.add(itemCategorias);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(menuCadastros);
 
-        jMenu2.setText("Movimentações");
+        menuMovimentacoes.setText("Movimentações");
 
-        jMenuItem4.setText("Registrar Movimentação");
-        jMenuItem4.addActionListener(this::jMenuItem4ActionPerformed);
-        jMenu2.add(jMenuItem4);
+        itemMovimentacao.setText("Registrar Movimentação");
+        itemMovimentacao.addActionListener(this::itemMovimentacaoActionPerformed);
+        menuMovimentacoes.add(itemMovimentacao);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(menuMovimentacoes);
 
-        jMenu3.setText("Relatórios");
+        menuRelatorios.setText("Relatórios");
 
-        jMenuItem5.setText("Gerar Relatório");
-        jMenu3.add(jMenuItem5);
+        itemRelatorio.setText("Gerar Relatório");
+        menuRelatorios.add(itemRelatorio);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menuRelatorios);
 
-        jMenu4.setText("Sistema");
+        menuSistema.setText("Sistema");
 
-        jMenuItem6.setText("Sair");
-        jMenu4.add(jMenuItem6);
+        itemSair.setText("Sair");
+        menuSistema.add(itemSair);
 
-        jMenuBar1.add(jMenu4);
+        jMenuBar1.add(menuSistema);
 
         setJMenuBar(jMenuBar1);
 
@@ -94,30 +94,28 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(117, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addContainerGap(118, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitulo)
+                    .addComponent(lblSubtitulo))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(75, Short.MAX_VALUE)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblSubtitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(116, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+    private void itemMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemMovimentacaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
+    }//GEN-LAST:event_itemMovimentacaoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -145,18 +143,18 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuItem itemCategorias;
+    private javax.swing.JMenuItem itemMovimentacao;
+    private javax.swing.JMenuItem itemProdutos;
+    private javax.swing.JMenuItem itemRelatorio;
+    private javax.swing.JMenuItem itemSair;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JLabel lblSubtitulo;
+    private javax.swing.JLabel lblTitulo;
+    private javax.swing.JMenu menuCadastros;
+    private javax.swing.JMenu menuMovimentacoes;
+    private javax.swing.JMenu menuRelatorios;
+    private javax.swing.JMenu menuSistema;
     // End of variables declaration//GEN-END:variables
 }
