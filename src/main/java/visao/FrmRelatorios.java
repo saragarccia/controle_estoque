@@ -35,6 +35,13 @@ public class FrmRelatorios extends javax.swing.JFrame {
                 15,
                 10
         ));
+        
+        // Centraliza botão fechar no painel
+        pnlFechar.setLayout(new java.awt.FlowLayout(
+                java.awt.FlowLayout.CENTER,
+                10,
+                10
+        ));
 
     }
 
@@ -51,6 +58,8 @@ public class FrmRelatorios extends javax.swing.JFrame {
         btnFinanceiro = new javax.swing.JButton();
         scrRelatorio = new javax.swing.JScrollPane();
         tblRelatorio = new javax.swing.JTable();
+        pnlFechar = new javax.swing.JPanel();
+        btnFechar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -119,6 +128,25 @@ public class FrmRelatorios extends javax.swing.JFrame {
         ));
         scrRelatorio.setViewportView(tblRelatorio);
 
+        btnFechar.setText("Fechar");
+        btnFechar.addActionListener(this::btnFecharActionPerformed);
+
+        javax.swing.GroupLayout pnlFecharLayout = new javax.swing.GroupLayout(pnlFechar);
+        pnlFechar.setLayout(pnlFecharLayout);
+        pnlFecharLayout.setHorizontalGroup(
+            pnlFecharLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFecharLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnFechar)
+                .addGap(340, 340, 340))
+        );
+        pnlFecharLayout.setVerticalGroup(
+            pnlFecharLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlFecharLayout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(btnFechar))
+        );
+
         javax.swing.GroupLayout pnlPrincipalLayout = new javax.swing.GroupLayout(pnlPrincipal);
         pnlPrincipal.setLayout(pnlPrincipalLayout);
         pnlPrincipalLayout.setHorizontalGroup(
@@ -128,7 +156,8 @@ public class FrmRelatorios extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(pnlPrincipalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlBotoes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(scrRelatorio))
+                    .addComponent(scrRelatorio)
+                    .addComponent(pnlFechar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         pnlPrincipalLayout.setVerticalGroup(
@@ -140,7 +169,9 @@ public class FrmRelatorios extends javax.swing.JFrame {
                 .addComponent(pnlBotoes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(scrRelatorio, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(pnlFechar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(61, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -452,6 +483,12 @@ public class FrmRelatorios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFinanceiroActionPerformed
 
+    private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
+        // TODO add your handling code here:
+        
+        dispose();
+    }//GEN-LAST:event_btnFecharActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -481,11 +518,13 @@ public class FrmRelatorios extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCategoria;
     private javax.swing.JButton btnEstoqueBaixo;
+    private javax.swing.JButton btnFechar;
     private javax.swing.JButton btnFinanceiro;
     private javax.swing.JButton btnListaPrecos;
     private javax.swing.JButton btnMovimentacoes;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JPanel pnlBotoes;
+    private javax.swing.JPanel pnlFechar;
     private javax.swing.JPanel pnlPrincipal;
     private javax.swing.JScrollPane scrRelatorio;
     private javax.swing.JTable tblRelatorio;
