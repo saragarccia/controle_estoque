@@ -27,6 +27,23 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="menuGerenciamentos">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Gerenciamentos"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="itemGerenciarProdutos">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gerenciar Produtos"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="itemGerenciarCategorias">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gerenciar Categorias"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="menuMovimentacoes">
           <Properties>
             <Property name="text" type="java.lang.String" value="Movimenta&#xe7;&#xf5;es"/>

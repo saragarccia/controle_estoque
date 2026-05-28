@@ -37,6 +37,9 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         menuCadastros = new javax.swing.JMenu();
         itemProdutos = new javax.swing.JMenuItem();
         itemCategorias = new javax.swing.JMenuItem();
+        menuGerenciamentos = new javax.swing.JMenu();
+        itemGerenciarProdutos = new javax.swing.JMenuItem();
+        itemGerenciarCategorias = new javax.swing.JMenuItem();
         menuMovimentacoes = new javax.swing.JMenu();
         itemMovimentacao = new javax.swing.JMenuItem();
         menuRelatorios = new javax.swing.JMenu();
@@ -63,6 +66,16 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
         menuCadastros.add(itemCategorias);
 
         jMenuBar1.add(menuCadastros);
+
+        menuGerenciamentos.setText("Gerenciamentos");
+
+        itemGerenciarProdutos.setText("Gerenciar Produtos");
+        menuGerenciamentos.add(itemGerenciarProdutos);
+
+        itemGerenciarCategorias.setText("Gerenciar Categorias");
+        menuGerenciamentos.add(itemGerenciarCategorias);
+
+        jMenuBar1.add(menuGerenciamentos);
 
         menuMovimentacoes.setText("Movimentações");
 
@@ -238,6 +251,8 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem itemCategorias;
+    private javax.swing.JMenuItem itemGerenciarCategorias;
+    private javax.swing.JMenuItem itemGerenciarProdutos;
     private javax.swing.JMenuItem itemMovimentacao;
     private javax.swing.JMenuItem itemProdutos;
     private javax.swing.JMenuItem itemRelatorio;
@@ -246,6 +261,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel lblSubtitulo;
     private javax.swing.JLabel lblTitulo;
     private javax.swing.JMenu menuCadastros;
+    private javax.swing.JMenu menuGerenciamentos;
     private javax.swing.JMenu menuMovimentacoes;
     private javax.swing.JMenu menuRelatorios;
     private javax.swing.JMenu menuSistema;
