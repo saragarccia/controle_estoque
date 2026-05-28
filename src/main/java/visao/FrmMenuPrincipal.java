@@ -165,7 +165,7 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_itemGerenciarCategoriasActionPerformed
 
     private void itemGerenciarMovimentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemGerenciarMovimentacaoActionPerformed
-        // TODO add your handling code here:
+        abrirTelaGerenciarMovimentacao();
     }//GEN-LAST:event_itemGerenciarMovimentacaoActionPerformed
     private void abrirTelaCategoria() {
 
@@ -267,6 +267,20 @@ public class FrmMenuPrincipal extends javax.swing.JFrame {
             javax.swing.JOptionPane.showMessageDialog(
                     this,
                     "Erro ao abrir a tela de gerenciamento de categorias: " + erro.getMessage()
+            );
+        }
+    }
+
+    private void abrirTelaGerenciarMovimentacao() {
+
+        try {
+            FrmGerenciaMovimentacao telaGerenciarMovimentacao = new FrmGerenciaMovimentacao();
+            telaGerenciarMovimentacao.setLocationRelativeTo(null);
+            telaGerenciarMovimentacao.setVisible(true);
+        } catch (Exception erro) {
+            javax.swing.JOptionPane.showMessageDialog(
+                    this,
+                    "Erro ao abrir a tela de gerenciamento de movimentação: " + erro.getMessage()
             );
         }
     }
