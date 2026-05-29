@@ -162,7 +162,7 @@ public class Produto {
         return quantidadeMaxima;
     }
 
-    /* Retorna o ID da categoria do produto. 
+    /* Retorna o ID da categoria do produto
     * 
     * @return ID da categoria */
     public int getCategoriaId() {
