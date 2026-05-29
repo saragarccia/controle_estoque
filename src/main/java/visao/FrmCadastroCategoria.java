@@ -4,28 +4,77 @@ import dao.CategoriaDAO;
 import modelo.Categoria;
 import javax.swing.JOptionPane;
 
+/**
+ * Tela responsável pelo cadastro e alteração de categorias.
+ *
+ * Essa classe permite cadastrar uma nova categoria ou editar uma categoria
+ * já existente, informando nome, tamanho e tipo de embalagem.
+ *
+ * A tela utiliza a classe CategoriaDAO para realizar as operações no banco
+ * de dados.
+ *
+ * @author Juan André Latronico
+ * @version 1.0
+ */
 public class FrmCadastroCategoria extends javax.swing.JFrame {
-
+    
+    /**
+     * Logger utilizado para registrar erros da tela.
+     */
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCadastroCategoria.class.getName());
-
+    
+    /**
+     * Armazena o identificador da categoria em edição.
+     *
+     * Quando o valor for 0, significa que será feito um novo cadastro.
+     * Quando possuir um valor diferente de 0, significa que uma categoria
+     * existente será alterada.
+     */
     private int idCategoria = 0;
-
+    
+    /**
+     * Construtor padrão da tela de cadastro de categoria.
+     *
+     * Inicializa os componentes gráficos da interface.
+     */
     public FrmCadastroCategoria() {
         initComponents();
     }
+    
 
+    /**
+     * Construtor utilizado para abrir a tela em modo de edição.
+     *
+     * Recebe o id da categoria, inicializa a tela e carrega os dados
+     * cadastrados no banco.
+     *
+     * @param idCategoria identificador da categoria que será editada.
+     */
     FrmCadastroCategoria(int idCategoria) {
 
         initComponents();
         this.idCategoria = idCategoria;
         receberIdCategoria(idCategoria);
     }
-
+    
+    /**
+     * Recebe o identificador da categoria selecionada e carrega seus dados
+     * na tela.
+     *
+     * @param idCategoria identificador da categoria que será carregada.
+     */
     public void receberIdCategoria(int idCategoria) {
         this.idCategoria = idCategoria;
         carregarDadosCategoria();
     }
-
+    
+    /**
+     * Carrega os dados da categoria selecionada no formulário.
+     *
+     * Busca a categoria no banco de dados por meio da classe CategoriaDAO.
+     * Caso encontre, preenche os campos da tela. Caso contrário, exibe
+     * uma mensagem de erro e fecha a janela.
+     */
     private void carregarDadosCategoria() {
         CategoriaDAO dao = new CategoriaDAO();
         Categoria categoria = dao.buscarCategoria(idCategoria);
@@ -39,14 +88,24 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             this.dispose();
         }
     }
-
+    
+    /**
+     * Limpa os campos do formulário.
+     *
+     * Após limpar os dados, o foco retorna para o campo de nome.
+     */
     private void limparCampos() {
         txtNome.setText("");
         cmbTamanho.setSelectedIndex(0);
         cmbEmbalagem.setSelectedIndex(0);
         txtNome.requestFocus();
     }
-
+    
+    /**
+     * Valida o nome da categoria, o tamanho e a embalagem.
+     *
+     * @return true se todos os campos estiverem corretos, false caso contrário.
+     */
     private boolean camposValidos() {
         if (txtNome.getText().trim().equals("")) {
             JOptionPane.showMessageDialog(this, "Informe o nome da categoria.");
@@ -165,7 +224,14 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    /**
+     * Primeiro valida os campos. Depois cria um objeto Categoria com os dados
+     * informados na tela. Se o id da categoria for 0, realiza um novo cadastro.
+     * Caso contrário, altera uma categoria existente.
+     *
+     * @param evt evento de ação do botão salvar.
+     */
     private void SalvarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SalvarCadastroActionPerformed
         if (!camposValidos()) {
             return;
@@ -195,7 +261,10 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Erro ao salvar categoria.");
         }
     }//GEN-LAST:event_SalvarCadastroActionPerformed
-
+    
+    /**
+     * @param evt evento de ação do botão limpar.
+     */
     private void LimparCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LimparCadastroActionPerformed
         limparCampos();
     }//GEN-LAST:event_LimparCadastroActionPerformed
@@ -203,27 +272,50 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
 
     }//GEN-LAST:event_txtNomeActionPerformed
-
+   
+    /**
+     * Fecha a janela atual sem salvar alterações.
+     *
+     * @param evt evento de ação do botão cancelar.
+     */
     private void CancelarCadastroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CancelarCadastroActionPerformed
         this.dispose();
     }//GEN-LAST:event_CancelarCadastroActionPerformed
-
+    /**
+     * Chama o método responsável por fechar a tela.
+     *
+     * @param evt evento de ação do botão cancelar.
+     */
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
+     
+    /**
+     * Chama o método responsável por validar os campos e salvar a categoria.
+     *
+     * @param evt evento de ação do botão salvar.
+     */
     private void btnSalvarActionPerformed(java.awt.event.ActionEvent evt) {
         SalvarCadastroActionPerformed(evt);
     }
-
+    
+    /**
+     * Chama o método responsável por limpar os campos do formulário.
+     *
+     * @param evt evento de ação do botão limpar.
+     */
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {
         LimparCadastroActionPerformed(evt);
     }
-
+    
     /**
-     * @param args the command line arguments
+     * Método principal da aplicação. 
+     *
+     * abre a tela de cadastro de categoria.
+     *
+     * @param args argumentos da linha de comando.
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -240,7 +332,6 @@ public class FrmCadastroCategoria extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new FrmCadastroCategoria().setVisible(true));
     }
 
