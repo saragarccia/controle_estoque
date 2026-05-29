@@ -7,11 +7,28 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-
+/**
+ * Tela responsável pela exibição dos relatórios do sistema de estoque.
+ * 
+ * Permite visualizar lista de preços, produtos com estoque baixo,
+ * quantidade de produtos por categoria, movimentações de estoque
+ * e relatório financeiro.
+ * 
+ * @author Sara Luana Garcia
+ * @version 1.0
+ * @since 2026
+ */
 public class FrmRelatorios extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmRelatorios.class.getName());
 
+    /**
+     * Construtor da tela de relatórios.
+     * 
+     * Inicializa os componentes da interface, centraliza a janela,
+     * ajusta a altura das linhas da tabela e organiza os painéis
+     * de botões.
+     */
     
     public FrmRelatorios() {
 
@@ -188,6 +205,14 @@ public class FrmRelatorios extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Gera o relatório de lista de preços dos produtos.
+     * 
+     * Busca no banco de dados o nome do produto, preço unitário,
+     * quantidade em estoque e categoria, exibindo dados na tabela.
+     * 
+     * @param evt Evento de clique no botão Lista de Preços.
+     */
     private void btnListaPrecosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaPrecosActionPerformed
         
         try {
@@ -249,6 +274,14 @@ public class FrmRelatorios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnListaPrecosActionPerformed
 
+    /**
+     * Gera o relatório de produtos com estoque baixo.
+     * 
+     * Exibe os produtos cuja quantidade em estoque está abaixo
+     * da quantidade mínima cadastrada.
+     * 
+     * @param evt Evento de clique no botão Estoque Baixo.
+     */
     private void btnEstoqueBaixoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueBaixoActionPerformed
         
         try {
@@ -304,6 +337,14 @@ public class FrmRelatorios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnEstoqueBaixoActionPerformed
 
+    /**
+     * Gera o relatório de produtos por categoria.
+     * 
+     * Consulta as categorias cadastradas e mostra a quantidade
+     * de produtos vinculados a cada uma.
+     * 
+     * @param evt Evento de clique no botão Categoria.
+     */
     private void btnCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriaActionPerformed
         
         try {
@@ -358,6 +399,14 @@ public class FrmRelatorios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCategoriaActionPerformed
 
+    /**
+     * Gera o relatório de movimentações de estoque.
+     * 
+     * Exibe o produto, a data da movimentação, a quantidade movimentada
+     * e o tipo de movimentação realizada.
+     * 
+     * @param evt Evento de clique no botão Movimentações.
+     */
     private void btnMovimentacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimentacoesActionPerformed
         
         try {
@@ -418,6 +467,14 @@ public class FrmRelatorios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnMovimentacoesActionPerformed
 
+    /**
+     * Gera o relatório financeiro do estoque.
+     * 
+     * Calcula o valor total de cada produto com base na quantidade
+     * em estoque multiplicada pelo preço unitário.
+     * 
+     * @param evt Evento de clique no botão Financeiro.
+     */
     private void btnFinanceiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinanceiroActionPerformed
         
         try {
@@ -477,13 +534,22 @@ public class FrmRelatorios extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnFinanceiroActionPerformed
 
+    /**
+     * Fecha a tela de relatórios.
+     * 
+     * @param evt Evento de clique no botão Fechar.
+     */
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         
 
         dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 
-    
+    /**
+     * Método principal responsável por iniciar a tela de relatórios.
+     * 
+     * @param args Argumentos da linha de comando.
+     */
     public static void main(String args[]) {
         
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
