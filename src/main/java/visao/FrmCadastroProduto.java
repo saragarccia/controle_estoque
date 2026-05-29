@@ -4,10 +4,21 @@ import dao.ProdutoDAO;
 import modelo.Produto;
 import javax.swing.JOptionPane;
 
+/* Tela responsável pelo cadastro de produtos no sistema. 
+* 
+* Esta classe permite que o usuário informe os dados de um produto, 
+* cadastre no banco de dados, limpe os campos da tela ou feche a janela. 
+* 
+* @author Matheus */
 public class FrmCadastroProduto extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmCadastroProduto.class.getName());
 
+    /** * Logger utilizado para registrar informações e erros da classe. 
+     *
+     * Construtor da tela de cadastro de produto. 
+     * 
+     * Inicializa todos os componentes gráficos da interface. */
     public FrmCadastroProduto() {
         initComponents();
     }
@@ -181,7 +192,14 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
     private void txtCategoriaIdActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCategoriaIdActionPerformed
 
     }//GEN-LAST:event_txtCategoriaIdActionPerformed
-
+    
+    /* Evento executado ao clicar no botão Cadastrar. 
+    * 
+    * Coleta os dados informados pelo usuário, 
+    * cria um objeto Produto e realiza o cadastro 
+    * no banco de dados através da classe ProdutoDAO. 
+    * 
+    * @param evt Evento de ação do botão */
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
         try {
             Produto produto = new Produto();
@@ -204,10 +222,20 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
+    /* Evento executado ao clicar no botão Fechar. 
+    * 
+    * Fecha a janela de cadastro de produtos. 
+    * 
+    * @param evt Evento de ação do botão */
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
 
+    /*  Evento executado ao clicar no botão Limpar. 
+    * 
+    * Remove todos os valores preenchidos nos campos da tela. 
+    * 
+    * @param evt Evento de ação do botão */
     private void btnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparActionPerformed
         txtNome.setText("");
         txtPrecoUnitario.setText("");
@@ -218,34 +246,56 @@ public class FrmCadastroProduto extends javax.swing.JFrame {
         txtCategoriaId.setText("");
     }//GEN-LAST:event_btnLimparActionPerformed
 
+    /* Evento executado ao pressionar Enter no campo Preço Unitário. 
+    * 
+    * @param evt Evento de ação do campo */
     private void txtPrecoUnitarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPrecoUnitarioActionPerformed
 
     }//GEN-LAST:event_txtPrecoUnitarioActionPerformed
 
+    /* Evento executado ao pressionar Enter no campo Quantidade em Estoque. 
+     * 
+     * @param evt Evento de ação do campo */
     private void txtQuantidadeEstoqueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeEstoqueActionPerformed
 
     }//GEN-LAST:event_txtQuantidadeEstoqueActionPerformed
 
+    /* Evento executado ao pressionar Enter no campo Unidade. 
+     * 
+     * @param evt Evento de ação do campo */
     private void txtUnidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUnidadeActionPerformed
 
     }//GEN-LAST:event_txtUnidadeActionPerformed
 
+    /* Evento executado ao pressionar Enter no campo Quantidade Máxima. 
+    * 
+    * @param evt Evento de ação do campo */
     private void txtQuantidadeMaximaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeMaximaActionPerformed
 
     }//GEN-LAST:event_txtQuantidadeMaximaActionPerformed
-
+   /* Evento executado ao pressionar Enter no campo auxiliar txtNome5. 
+    * 
+    * @param evt Evento de ação do campo */
     private void txtNome5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNome5ActionPerformed
 
     }//GEN-LAST:event_txtNome5ActionPerformed
 
+    /* Evento executado ao pressionar Enter no campo Quantidade Mínima. 
+    * 
+    * @param evt Evento de ação do campo */
     private void txtQuantidadeMinimaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtQuantidadeMinimaActionPerformed
 
     }//GEN-LAST:event_txtQuantidadeMinimaActionPerformed
 
+    /* Evento executado ao pressionar Enter no campo Nome. 
+     * 
+     * @param evt Evento de ação do campo */
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
 
     }//GEN-LAST:event_txtNomeActionPerformed
 
+    /* Método principal responsável por iniciar a tela de cadastro de produtos. 
+     * @param args Argumentos da linha de comando */
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(() -> new FrmCadastroProduto().setVisible(true));
