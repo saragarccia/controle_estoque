@@ -1,24 +1,18 @@
 package visao;
 
 import dao.Conexao;
-import java.awt.Dimension;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author dcris
- */
+
 public class FrmRelatorios extends javax.swing.JFrame {
 
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmRelatorios.class.getName());
 
-    /**
-     * Creates new form FrmRelatorios
-     */
+    
     public FrmRelatorios() {
 
         initComponents();
@@ -195,7 +189,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnListaPrecosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnListaPrecosActionPerformed
-        // TODO add your handling code here:
+        
         try {
 
             Connection conn = Conexao.conectar();
@@ -256,7 +250,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnListaPrecosActionPerformed
 
     private void btnEstoqueBaixoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstoqueBaixoActionPerformed
-        // TODO add your handling code here:
+        
         try {
 
             Connection conn = Conexao.conectar();
@@ -311,7 +305,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEstoqueBaixoActionPerformed
 
     private void btnCategoriaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriaActionPerformed
-        // TODO add your handling code here:
+        
         try {
 
             Connection conn = Conexao.conectar();
@@ -365,7 +359,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCategoriaActionPerformed
 
     private void btnMovimentacoesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMovimentacoesActionPerformed
-        // TODO add your handling code here:
+        
         try {
 
             Connection conn = Conexao.conectar();
@@ -425,7 +419,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnMovimentacoesActionPerformed
 
     private void btnFinanceiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFinanceiroActionPerformed
-        // TODO add your handling code here:
+        
         try {
 
             Connection conn = Conexao.conectar();
@@ -484,16 +478,14 @@ public class FrmRelatorios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnFinanceiroActionPerformed
 
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
-        // TODO add your handling code here:
+        
 
         dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -510,7 +502,7 @@ public class FrmRelatorios extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        
         java.awt.EventQueue.invokeLater(() -> new FrmRelatorios().setVisible(true));
     }
 
