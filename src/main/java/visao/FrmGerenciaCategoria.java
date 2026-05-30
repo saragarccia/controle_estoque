@@ -6,17 +6,45 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Categoria;
 
+/**
+ * Tela responsável pelo gerenciamento de categorias.
+ *
+ * Permite listar, cadastrar, editar, excluir e atualizar categorias
+ * cadastradas no sistema.
+ *
+ * Essa tela utiliza a classe CategoriaDAO para acessar os dados
+ * da tabela categoria no banco de dados.
+ *
+ * @author Seu Nome
+ * @version 1.0
+ */
 public class FrmGerenciaCategoria extends javax.swing.JFrame {
-
+    
+    /**
+     * Logger utilizado para registrar possíveis erros da tela.
+     */
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmGerenciaCategoria.class.getName());
-
+    
+    /**
+     * Construtor da tela de gerenciamento de categorias.
+     *
+     * Inicializa os componentes gráficos, bloqueia a edição direta
+     * da tabela, carrega as categorias cadastradas e centraliza a janela.
+     */
     public FrmGerenciaCategoria() {
         initComponents();
         jTable1.setDefaultEditor(Object.class, null);
         carregarTabela();
         setLocationRelativeTo(null);
     }
-
+    
+    /**
+     * Carrega as categorias cadastradas no banco de dados e exibe
+     * os dados na tabela da tela.
+     *
+     * Primeiro busca a lista de categorias por meio da CategoriaDAO.
+     * Depois limpa a tabela e adiciona novamente os registros encontrados.
+     */
     private void carregarTabela() {
         CategoriaDAO dao = new CategoriaDAO();
         ArrayList<Categoria> lista = dao.listarCategorias();
@@ -33,7 +61,15 @@ public class FrmGerenciaCategoria extends javax.swing.JFrame {
             });
         }
     }
-
+    
+    /**
+     * Obtém o identificador da categoria selecionada na tabela.
+     *
+     * Caso nenhuma linha esteja selecionada, exibe uma mensagem
+     * ao usuário e retorna -1.
+     *
+     * @return id da categoria selecionada ou -1 caso nenhuma linha esteja selecionada.
+     */
     private int pegarIdSelecionado() {
         int linhaSelecionada = jTable1.getSelectedRow();
 
@@ -44,7 +80,15 @@ public class FrmGerenciaCategoria extends javax.swing.JFrame {
 
         return Integer.parseInt(jTable1.getValueAt(linhaSelecionada, 0).toString());
     }
-
+    
+    /**
+     * Abre a tela de cadastro de categoria.
+     *
+     * Ao fechar a tela de cadastro, a tabela de gerenciamento é atualizada
+     * automaticamente para mostrar os dados mais recentes.
+     *
+     * @param tela tela de cadastro de categoria que será aberta.
+     */
     private void abrirTelaCadastro(FrmCadastroCategoria tela) {
         tela.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -146,12 +190,27 @@ public class FrmGerenciaCategoria extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+   
+    /**
+     * Evento executado ao clicar no botão Novo.
+     *
+     * Abre a tela de cadastro para registrar uma nova categoria.
+     *
+     * @param evt evento de ação do botão Novo.
+     */
     private void NovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NovoActionPerformed
         FrmCadastroCategoria tela = new FrmCadastroCategoria();
         abrirTelaCadastro(tela);
     }//GEN-LAST:event_NovoActionPerformed
-
+  
+    /**
+     * Evento executado ao clicar no botão Editar.
+     *
+     * Verifica qual categoria foi selecionada na tabela e abre a tela
+     * de cadastro em modo de edição.
+     *
+     * @param evt evento de ação do botão Editar.
+     */
     private void EditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarActionPerformed
         int idCategoria = pegarIdSelecionado();
 
@@ -160,7 +219,15 @@ public class FrmGerenciaCategoria extends javax.swing.JFrame {
             abrirTelaCadastro(tela);
         }
     }//GEN-LAST:event_EditarActionPerformed
-
+  
+    /**
+     * Evento executado ao clicar no botão Excluir.
+     *
+     * Verifica a categoria selecionada, solicita confirmação do usuário
+     * e, se confirmado, exclui a categoria do banco de dados.
+     *
+     * @param evt evento de ação do botão Excluir.
+     */
     private void ExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExcluirActionPerformed
         int idCategoria = pegarIdSelecionado();
 
@@ -191,20 +258,37 @@ public class FrmGerenciaCategoria extends javax.swing.JFrame {
             }
         }
     }//GEN-LAST:event_ExcluirActionPerformed
-
+ 
+    /**
+     * Evento executado ao clicar no botão Atualizar.
+     *
+     * Recarrega a tabela com os dados mais recentes do banco.
+     *
+     * @param evt evento de ação do botão Atualizar.
+     */
     private void AtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtualizarActionPerformed
         carregarTabela();
     }//GEN-LAST:event_AtualizarActionPerformed
-
+   
+    /**
+     * Evento executado ao clicar no botão Fechar.
+     *
+     * Encerra a aplicação.
+     *
+     * @param evt evento de ação do botão Fechar.
+     */
     private void FecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FecharActionPerformed
         this.dispose();
     }//GEN-LAST:event_FecharActionPerformed
 
     /**
-     * @param args the command line arguments
+     * Método principal da aplicação.
+     *
+     * abre a tela de gerenciamento de categorias.
+     *
+     * @param args argumentos da linha de comando.
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -220,8 +304,6 @@ public class FrmGerenciaCategoria extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> new FrmGerenciaCategoria().setVisible(true));
     }
 
