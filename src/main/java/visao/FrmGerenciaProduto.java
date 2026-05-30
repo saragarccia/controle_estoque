@@ -6,10 +6,24 @@ import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
+/* Tela responsável pelo gerenciamento de produtos do sistema. 
+ * 
+ * Esta classe permite visualizar, atualizar e excluir produtos 
+ * cadastrados no banco de dados. 
+ * 
+ * A interface apresenta uma tabela contendo todos os produtos 
+ * cadastrados no sistema. 
+ * 
+ * @author Matheus */
 public class FrmGerenciaProduto extends javax.swing.JFrame {
 
+    /*Logger utilizado para registrar informações e erros da classe. */
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(FrmGerenciaProduto.class.getName());
 
+    /* Construtor da tela de gerenciamento de produtos. 
+     * 
+     * Inicializa os componentes da interface e carrega os dados 
+    * da tabela de produtos. */
     public FrmGerenciaProduto() {
         initComponents();
         carregarTabela();
@@ -117,18 +131,28 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /* Atualiza os dados exibidos na tabela de produtos. 
+     *
+     * @param evt Evento de ação do botão */
     private void btnAtualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAtualizarActionPerformed
         carregarTabela();
     }//GEN-LAST:event_btnAtualizarActionPerformed
 
+    /* Fecha a janela de gerenciamento de produtos. 
+     *
+     * @param evt Evento de ação do botão */
     private void btnFecharActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFecharActionPerformed
         this.dispose();
     }//GEN-LAST:event_btnFecharActionPerformed
 
+    /* Remove o produto selecionado da tabela * e do banco de dados após confirmação do usuário. 
+     * 
+     * @param evt Evento de ação do botão */
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
 
         int linha = tblProdutos.getSelectedRow();
 
+        /* Verifica se algum produto foi selecionado. */
         if (linha == -1) {
             JOptionPane.showMessageDialog(
                     this,
@@ -136,7 +160,8 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             );
             return;
         }
-
+    
+        /* Opções exibidas na confirmação de exclusão. */
         Object[] opcoes = {"Sim", "Não"};
 
         int confirmacao = JOptionPane.showOptionDialog(
@@ -150,6 +175,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
                 opcoes[0]
         );
 
+        /* Executa a exclusão caso o usuário confirme. */
         if (confirmacao == JOptionPane.YES_OPTION) {
 
             int id = Integer.parseInt(
@@ -169,11 +195,12 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
 
     }//GEN-LAST:event_btnExcluirActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
+    /* Método principal responsável por iniciar a aplicação. 
+     * Define o tema visual da interface e exibe a tela. 
+     * 
+     * @param args Argumentos da linha de comando */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
@@ -190,7 +217,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
+        /* Cria e exibe a tela de gerenciamento. */
         java.awt.EventQueue.invokeLater(() -> new FrmGerenciaProduto().setVisible(true));
     }
 
@@ -209,6 +236,9 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
     private javax.swing.JTable tblProdutos;
     // End of variables declaration//GEN-END:variables
 
+    /* Carrega os produtos cadastrados no banco de dados e exibe as informações na tabela da interface. 
+     * 
+     * Cria as colunas da tabela e adiciona os dados retornados pela classe ProdutoDAO. */
     private void carregarTabela() {
 
         DefaultTableModel modelo = new DefaultTableModel();
@@ -225,6 +255,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
         ProdutoDAO dao = new ProdutoDAO();
         List<Produto> lista = dao.listar();
 
+        /* Adiciona os produtos na tabela. */
         for (Produto p : lista) {
             modelo.addRow(new Object[]{
                 p.getId(),
@@ -238,6 +269,7 @@ public class FrmGerenciaProduto extends javax.swing.JFrame {
             });
         }
 
+        /* Atualiza a tabela exibida na interface. */
         tblProdutos.setModel(modelo);
     }
 }
