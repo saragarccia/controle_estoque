@@ -15,7 +15,7 @@ import modelo.Categoria;
  * Essa tela utiliza a classe CategoriaDAO para acessar os dados
  * da tabela categoria no banco de dados.
  *
- * @author Seu Nome
+ * @author Juan André Latronico
  * @version 1.0
  */
 public class FrmGerenciaCategoria extends javax.swing.JFrame {

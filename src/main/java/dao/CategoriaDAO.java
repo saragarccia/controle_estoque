@@ -10,7 +10,7 @@ import modelo.Categoria;
  * Classe responsável pelas operações de acesso ao banco de dados
  * relacionadas à entidade Categoria.
  *
- * @author Seu Nome
+ * @author Juan André Latronico
  * @version 1.0
  */
 public class CategoriaDAO {
